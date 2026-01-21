@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mensagens LAN - Vritik Valabdás</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="project-hero">
+    <a href="index.html" class="back-link">← Portfólio</a>
+    <h1>Mensagens LAN</h1>
+    <p>Comunicação em tempo real na rede local</p>
+</header>
+
+<main class="project-content">
+
+    <section class="project-overview">
+        <h2>Visão Geral</h2>
+        <p>
+            Aplicação desktop em Java para troca de mensagens entre dispositivos na mesma rede local.
+            Deteta automaticamente utilizadores online e permite comunicação instantânea via sockets TCP.
+        </p>
+    </section>
+
+    <section class="project-section">
+        <h2>Funcionalidades</h2>
+        <div class="features-grid">
+            <div class="feature-item">
+                <strong>Deteção Automática</strong>
+                <p>Identifica dispositivos ativos na rede sem configuração manual</p>
+            </div>
+            <div class="feature-item">
+                <strong>Chat em Tempo Real</strong>
+                <p>Troca instantânea de mensagens de texto</p>
+            </div>
+            <div class="feature-item">
+                <strong>Histórico Local</strong>
+                <p>Armazenamento de conversas no dispositivo</p>
+            </div>
+            <div class="feature-item">
+                <strong>Interface Swing</strong>
+                <p>GUI nativa e responsiva</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="project-section">
+        <h2>Stack Técnica</h2>
+        <div class="tech-stack">
+            <span class="tech-tag">Java</span>
+            <span class="tech-tag">Swing/AWT</span>
+            <span class="tech-tag">Sockets TCP</span>
+            <span class="tech-tag">Threads</span>
+            <span class="tech-tag">Redes LAN</span>
+        </div>
+    </section>
+
+    <section class="project-section">
+        <h2>Arquitetura</h2>
+        <div class="architecture-block">
+            <div class="arch-column">
+                <h3>Network</h3>
+                <code>ClientHandler.java</code>
+                <code>MessageSender.java</code>
+                <code>MessageReceiver.java</code>
+                <code>UserDiscovery.java</code>
+            </div>
+            <div class="arch-column">
+                <h3>Interface</h3>
+                <code>ChatWindow.java</code>
+                <code>UserListPanel.java</code>
+            </div>
+            <div class="arch-column">
+                <h3>Utilitários</h3>
+                <code>MessageUtils.java</code>
+            </div>
+        </div>
+    </section>
+
+    <section class="project-section screenshots-section">
+        <h2>Demonstração</h2>
+        <div class="screenshots-grid">
+            <img src="assets/screenshots/lan-chat-1.png" alt="Interface do chat" onerror="this.style.display='none'">
+            <img src="assets/screenshots/lan-chat-2.png" alt="Lista de utilizadores" onerror="this.style.display='none'">
+        </div>
+    </section>
+
+    <section class="project-section">
+        <h2>Implementação Técnica</h2>
+        <div class="implementation-details">
+            <div class="detail-card">
+                <strong>Descoberta de Dispositivos</strong>
+                <p>Broadcast UDP para detetar peers na sub-rede. Cada cliente responde com hostname e IP.</p>
+            </div>
+            <div class="detail-card">
+                <strong>Comunicação</strong>
+                <p>Sockets TCP para envio/receção de mensagens. Thread dedicada por conexão ativa.</p>
+            </div>
+            <div class="detail-card">
+                <strong>Interface</strong>
+                <p>Swing com painel de utilizadores, área de chat e input field. Event-driven architecture.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="project-section">
+        <h2>Estado & Evolução</h2>
+        <p>
+            <strong>Atual:</strong> Sistema funcional para mensagens de texto em LAN.
+        </p>
+        <p>
+            <strong>Próximos passos:</strong> Transferência de ficheiros, encriptação E2E, mensagens de áudio.
+        </p>
+    </section>
+
+    <div class="project-actions">
+        <a href="https://github.com/vritik246800/Java_fun_Projects/tree/main/Apps/Lan_Chat" target="_blank" class="btn-primary">Ver Código</a>
+    </div>
+
+</main>
+
+<footer>
+    © 2026 — Vritik Valabdás
+</footer>
+
+</body>
+</html>

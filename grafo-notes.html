@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grafo Notes - Vritik Valabdás</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="project-hero">
+    <a href="index.html" class="back-link">← Portfólio</a>
+    <h1>Grafo Notes</h1>
+    <p>Sistema de notas interligadas usando grafos</p>
+</header>
+
+<main class="project-content">
+
+    <!-- VISÃO GERAL -->
+    <section class="project-overview">
+        <h2>Visão Geral</h2>
+        <p>
+            O <strong>Grafo Notes</strong> é uma aplicação de organização de conhecimento baseada
+            em grafos, onde cada nota representa um nó e as ligações entre ideias são representadas
+            por arestas. Inspirado em ferramentas como Obsidian, mas desenvolvido em Java,
+            com foco académico e estrutural.
+        </p>
+    </section>
+
+    <!-- FUNCIONALIDADES -->
+    <section class="project-section">
+        <h2>Funcionalidades</h2>
+        <div class="features-grid">
+            <div class="feature-item">
+                <strong>Notas como Nós</strong>
+                <p>Cada nota é representada como um nó num grafo.</p>
+            </div>
+            <div class="feature-item">
+                <strong>Ligações entre Notas</strong>
+                <p>Criação de relações entre ideias através de arestas.</p>
+            </div>
+            <div class="feature-item">
+                <strong>Navegação Visual</strong>
+                <p>Exploração das conexões entre notas de forma intuitiva.</p>
+            </div>
+            <div class="feature-item">
+                <strong>Pesquisa Rápida</strong>
+                <p>Localização eficiente de notas através de títulos ou palavras-chave.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- STACK -->
+    <section class="project-section">
+        <h2>Stack Técnica</h2>
+        <div class="tech-stack">
+            <span class="tech-tag">Java</span>
+            <span class="tech-tag">Swing / AWT</span>
+            <span class="tech-tag">Estrutura de Grafos</span>
+            <span class="tech-tag">POO</span>
+            <span class="tech-tag">Algoritmos</span>
+            <span class="tech-tag">Persistência em Ficheiros</span>
+        </div>
+    </section>
+
+    <!-- ARQUITETURA -->
+    <section class="project-section">
+        <h2>Arquitetura</h2>
+        <div class="architecture-block">
+            <div class="arch-column">
+                <h3>Modelo</h3>
+                <code>Nota.java</code>
+                <code>Grafo.java</code>
+                <code>Aresta.java</code>
+            </div>
+            <div class="arch-column">
+                <h3>Interface</h3>
+                <code>MainWindow.java</code>
+                <code>EditorNota.java</code>
+                <code>GraphPanel.java</code>
+            </div>
+            <div class="arch-column">
+                <h3>Persistência</h3>
+                <code>FileManager.java</code>
+                <code>DataSerializer.java</code>
+            </div>
+        </div>
+    </section>
+
+    <!-- DEMONSTRAÇÃO -->
+    <section class="project-section screenshots-section">
+        <h2>Demonstração</h2>
+        <div class="screenshots-grid">
+            <img src="assets/screenshots/grafo-notes-1.png" alt="Mapa de notas" onerror="this.style.display='none'">
+            <img src="assets/screenshots/grafo-notes-2.png" alt="Editor de notas" onerror="this.style.display='none'">
+        </div>
+    </section>
+
+    <!-- IMPLEMENTAÇÃO -->
+    <section class="project-section">
+        <h2>Implementação Técnica</h2>
+        <div class="implementation-details">
+            <div class="detail-card">
+                <strong>Estrutura de Grafo</strong>
+                <p>
+                    Implementação baseada em lista de adjacência para representar ligações
+                    entre notas de forma eficiente.
+                </p>
+            </div>
+            <div class="detail-card">
+                <strong>Gestão de Nós</strong>
+                <p>
+                    Criação, edição e remoção de notas com atualização automática das ligações.
+                </p>
+            </div>
+            <div class="detail-card">
+                <strong>Visualização</strong>
+                <p>
+                    Renderização gráfica dos nós e arestas usando Swing com posicionamento dinâmico.
+                </p>
+            </div>
+            <div class="detail-card">
+                <strong>Persistência</strong>
+                <p>
+                    Salvamento e carregamento do grafo completo em ficheiros locais.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ESTADO -->
+    <section class="project-section">
+        <h2>Estado & Evolução</h2>
+        <p><strong>Atual:</strong> Sistema funcional para criação e ligação de notas.</p>
+        <p>
+            <strong>Próximos passos:</strong> visualização em tempo real,
+            exportação para PDF, tags, pesquisa semântica e sincronização.
+        </p>
+    </section>
+
+    <!-- AÇÕES -->
+    <div class="project-actions">
+        <a href="https://github.com/vritik246800/Java_fun_Projects/tree/main/Apps/Note_Grafo" target="_blank" class="btn-primary">
+            Ver Código
+        </a>
+    </div>
+
+</main>
+
+<footer>
+    © 2026 — Vritik Valabdás
+</footer>
+
+</body>
+</html>

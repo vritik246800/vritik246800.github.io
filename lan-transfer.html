@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transferência de Ficheiros LAN - Vritik Valabdás</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="project-hero">
+    <a href="index.html" class="back-link">← Portfólio</a>
+    <h1>Transferência de Ficheiros LAN</h1>
+    <p>Envio de ficheiros entre dispositivos na rede local</p>
+</header>
+
+<main class="project-content">
+
+    <section class="project-overview">
+        <h2>Visão Geral</h2>
+        <p>
+            Aplicação desktop em Java para transferência direta de ficheiros entre dispositivos 
+            na mesma rede local. Identifica peers automaticamente e permite envio de ficheiros 
+            ou diretórios completos via sockets TCP.
+        </p>
+    </section>
+
+    <section class="project-section">
+        <h2>Funcionalidades</h2>
+        <div class="features-grid">
+            <div class="feature-item">
+                <strong>Deteção de Dispositivos</strong>
+                <p>Scan automático da sub-rede para encontrar peers disponíveis</p>
+            </div>
+            <div class="feature-item">
+                <strong>Envio de Ficheiros</strong>
+                <p>Transferência de ficheiros individuais ou diretórios completos</p>
+            </div>
+            <div class="feature-item">
+                <strong>Barra de Progresso</strong>
+                <p>Acompanhamento visual da transferência em tempo real</p>
+            </div>
+            <div class="feature-item">
+                <strong>Confirmação de Receção</strong>
+                <p>Dialog de aceitação/rejeição antes de receber ficheiros</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="project-section">
+        <h2>Stack Técnica</h2>
+        <div class="tech-stack">
+            <span class="tech-tag">Java</span>
+            <span class="tech-tag">Swing/AWT</span>
+            <span class="tech-tag">Sockets TCP</span>
+            <span class="tech-tag">I/O Streams</span>
+            <span class="tech-tag">Threads</span>
+            <span class="tech-tag">Redes LAN</span>
+        </div>
+    </section>
+
+    <section class="project-section">
+        <h2>Arquitetura</h2>
+        <div class="architecture-block">
+            <div class="arch-column">
+                <h3>Network</h3>
+                <code>DeviceScanner.java</code>
+                <code>FileSender.java</code>
+                <code>FileReceiver.java</code>
+                <code>TransferRequest.java</code>
+            </div>
+            <div class="arch-column">
+                <h3>Interface</h3>
+                <code>MainWindow.java</code>
+                <code>ReceiveDialog.java</code>
+            </div>
+            <div class="arch-column">
+                <h3>Utilitários</h3>
+                <code>FileUtils.java</code>
+            </div>
+        </div>
+    </section>
+
+    <section class="project-section screenshots-section">
+        <h2>Demonstração</h2>
+        <div class="screenshots-grid">
+            <img src="assets/screenshots/lan-transfer-1.png" alt="Interface principal" onerror="this.style.display='none'">
+            <img src="assets/screenshots/lan-transfer-2.png" alt="Seleção de ficheiros" onerror="this.style.display='none'">
+        </div>
+    </section>
+
+    <section class="project-section">
+        <h2>Implementação Técnica</h2>
+        <div class="implementation-details">
+            <div class="detail-card">
+                <strong>Descoberta de Peers</strong>
+                <p>Ping na sub-rede (ex: 192.168.1.0/24) para identificar dispositivos com o serviço ativo na porta específica.</p>
+            </div>
+            <div class="detail-card">
+                <strong>Protocolo de Transferência</strong>
+                <p>Socket TCP envia metadata (nome, tamanho) seguido dos bytes do ficheiro. Recetor valida e confirma receção.</p>
+            </div>
+            <div class="detail-card">
+                <strong>Gestão de Threads</strong>
+                <p>Thread separada para scan de rede, envio e receção. SwingWorker para atualizar UI durante transferência.</p>
+            </div>
+            <div class="detail-card">
+                <strong>Buffer de I/O</strong>
+                <p>BufferedInputStream/OutputStream com chunks de 8KB para transferência eficiente de ficheiros grandes.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="project-section">
+        <h2>Estado & Evolução</h2>
+        <p>
+            <strong>Atual:</strong> Sistema funcional para transferência de ficheiros em LAN.
+        </p>
+        <p>
+            <strong>Próximos passos:</strong> Encriptação AES, compressão ZIP, autenticação de dispositivos, retry automático em falhas.
+        </p>
+    </section>
+
+    <div class="project-actions">
+        <a href="https://github.com/vritik246800/Java_fun_Projects/tree/main/Apps/File_Transfer" target="_blank" class="btn-primary">Ver Código</a>
+    </div>
+
+</main>
+
+<footer>
+    © 2026 — Vritik Valabdás
+</footer>
+
+</body>
+</html>

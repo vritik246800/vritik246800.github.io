@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vritik Valabdás | Portfólio</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <header class="hero">
+        <h1>Vritik Valabdás</h1>
+        <p id="subtitle">Desenvolvedor Java | Sistemas | Redes | GUI</p>
+
+        <div class="hero-buttons">
+            <a href="#projects">Projetos</a>
+            <a href="about.html">Sobre</a>
+            <button onclick="generatePDF()">Download PDF</button>
+        </div>
+    </header>
+
+    
+
+    <section id="projects">
+        <h2>Projetos</h2>
+
+        <div class="projects-grid">
+            <div class="project-card">
+                <img src="assets/screenshots/police-system.png" alt="Sistema Policial"
+                    onerror="this.style.display='none'">
+                <h3>Sistema de Ocorrências Policiais</h3>
+                <p>Gestão de ocorrências usando árvores binárias.</p>
+                <span>Java • Estruturas de Dados • Árvores Binárias • Consola</span>
+                <a href="esquadra.html">Ver projeto →</a>
+            </div>
+
+            <div class="project-card">
+                <img src="assets/picture/No Image.png" alt="Gestão Supermercado"
+                    onerror="this.style.display='none'">
+                <h3>Gestão de Supermercado</h3>
+                <p>Sistema desktop para inventário e PDFs.</p>
+                <span>Java • Swing • iText PDF</span>
+                <a href="gestao-supermercado.html">Ver projeto →</a>
+            </div>
+
+            <div class="project-card">
+                <img src="assets/screenshots/file-transfer.png" alt="LAN Transfer" onerror="this.style.display='none'">
+                <h3>Transferência de Ficheiros LAN</h3>
+                <p>Envio de ficheiros na rede local.</p>
+                <span>Java • Sockets • LAN</span>
+                <a href="lan-transfer.html">Ver projeto →</a>
+            </div>
+
+            <div class="project-card">
+                <img src="assets/picture/No Image.png" alt="Browser Java" onerror="this.style.display='none'">
+                <h3>Browser Java</h3>
+                <p>Navegador Java com Chromium.</p>
+                <span>Java • JCEF • Chromium</span>
+                <a href="projects.html">Ver projeto →</a>
+            </div>
+
+            <div class="project-card">
+                <img src="assets/screenshots/lan-transfer.png" alt="LAN Transfer" onerror="this.style.display='none'">
+                <h3>Transferência de Mensagens LAN</h3>
+                <p>Envio de mensagens entre dispositivos.</p>
+                <span>Java • Sockets • LAN</span>
+                <a href="lan-messages.html">Ver projeto</a>
+            </div>
+
+            <div class="project-card">
+                <img src="assets/screenshots/grafo-note.png" alt="LAN Transfer" onerror="this.style.display='none'">
+                <h3>Nota de Grafo</h3>
+                <p>Projeto <strong>Nota de Grafo:</strong> análise de relações usando grafos.</p>
+                <span>Java • JSON</span>
+                <a href="grafo-notes.html">Ver projeto</a>
+            </div>
+
+            <div class="project-card">
+                <img src="assets/screenshots/conjunto de projectos1.png" alt="LAN Transfer"
+                    onerror="this.style.display='none'">
+                <h3>Prototipos</h3>
+                <p>Pequenos projectos </p>
+                <span>Java • JSON</span>
+                <a href="java-for-fun.html">Ver projeto</a>
+            </div>
+        </div>
+    </section>
+
+
+    <footer>
+        © 2026 — Portfólio Técnico
+    </footer>
+
+    <script src="js/pdf.js"></script>
+    <script src="js/lang.js"></script>
+</body>
+
+</html>

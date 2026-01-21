@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão de Supermercado - Vritik Valabdás</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="project-hero">
+    <a href="index.html" class="back-link">← Portfólio</a>
+    <h1>Sistema de Gestão de Supermercado</h1>
+    <p>Gestão de produtos, clientes, vendas e faturação</p>
+</header>
+
+<main class="project-content">
+
+    <!-- VISÃO GERAL -->
+    <section class="project-overview">
+        <h2>Visão Geral</h2>
+        <p>
+            Aplicação desktop desenvolvida em <strong>Java</strong> para gestão completa de um
+            supermercado ou mercearia. O sistema permite o controlo de produtos,
+            clientes, vendas, cálculo automático de preços com IVA, geração de recibos
+            e persistência de dados.
+        </p>
+    </section>
+
+    <!-- FUNCIONALIDADES -->
+    <section class="project-section">
+        <h2>Funcionalidades</h2>
+        <div class="features-grid">
+            <div class="feature-item">
+                <strong>Gestão de Produtos</strong>
+                <p>Registo, edição e cálculo automático do preço final.</p>
+            </div>
+            <div class="feature-item">
+                <strong>Gestão de Clientes</strong>
+                <p>Criação e consulta de clientes com histórico de compras.</p>
+            </div>
+            <div class="feature-item">
+                <strong>Vendas & Faturação</strong>
+                <p>Geração de recibos com IVA e margem de lucro.</p>
+            </div>
+            <div class="feature-item">
+                <strong>Exportação em PDF</strong>
+                <p>Emissão de faturas prontas para impressão.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- STACK -->
+    <section class="project-section">
+        <h2>Stack Técnica</h2>
+        <div class="tech-stack">
+            <span class="tech-tag">Java</span>
+            <span class="tech-tag">Swing</span>
+            <span class="tech-tag">AWT</span>
+            <span class="tech-tag">POO</span>
+            <span class="tech-tag">I/O Files</span>
+            <span class="tech-tag">PDF</span>
+        </div>
+    </section>
+
+    <!-- ARQUITETURA -->
+    <section class="project-section">
+        <h2>Arquitetura</h2>
+        <div class="architecture-block">
+            <div class="arch-column">
+                <h3>Modelo</h3>
+                <code>Produto.java</code>
+                <code>Cliente.java</code>
+                <code>Venda.java</code>
+            </div>
+            <div class="arch-column">
+                <h3>Interface</h3>
+                <code>Menu.java</code>
+                <code>GestaoProdutos.java</code>
+                <code>GestaoClientes.java</code>
+            </div>
+            <div class="arch-column">
+                <h3>Persistência</h3>
+                <code>FileManager.java</code>
+                <code>PDFGenerator.java</code>
+            </div>
+        </div>
+    </section>
+
+    <!-- IMPLEMENTAÇÃO -->
+    <section class="project-section">
+        <h2>Implementação Técnica</h2>
+        <div class="implementation-details">
+            <div class="detail-card">
+                <strong>Cálculo Automático</strong>
+                <p>
+                    O sistema calcula automaticamente o preço final
+                    com IVA e margem de lucro configurável.
+                </p>
+            </div>
+            <div class="detail-card">
+                <strong>Tabelas Interativas</strong>
+                <p>
+                    Utilização de JTable para visualização e edição
+                    direta dos produtos.
+                </p>
+            </div>
+            <div class="detail-card">
+                <strong>Persistência Local</strong>
+                <p>
+                    Dados guardados em ficheiros para garantir
+                    continuidade entre execuções.
+                </p>
+            </div>
+            <div class="detail-card">
+                <strong>Faturação Profissional</strong>
+                <p>
+                    Geração de PDFs com data, hora e código único de fatura.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ESTADO -->
+    <section class="project-section">
+        <h2>Estado & Evolução</h2>
+        <p>
+            <strong>Atual:</strong> Sistema completo e funcional
+            para gestão de supermercados.
+        </p>
+        <p>
+            <strong>Evoluções futuras:</strong> base de dados,
+            backup automático, autenticação de utilizadores
+            e integração com impressoras POS.
+        </p>
+    </section>
+
+    <!-- AÇÕES -->
+    <div class="project-actions">
+        <a href="https://github.com/vritik246800/Loja_Project"
+           target="_blank"
+           class="btn-primary">
+            Ver Código no GitHub
+        </a>
+    </div>
+
+</main>
+
+<footer>
+    © 2026 — Vritik Valabdás
+</footer>
+
+</body>
+</html>
