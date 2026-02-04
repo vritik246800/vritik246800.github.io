@@ -78,3 +78,4 @@ hero.addEventListener("touchend", () => {
 
 /* start */
 window.addEventListener("load", typeText);
+
