@@ -41,3 +41,12 @@ function getIcon(type) {
 
   return icons[type] || "";
 }
+
+function baixarRemoteAcess() {
+  const link = document.createElement("a");
+  link.href = "data/venda.xlsb";
+  link.download = "vendas_2026.xlsb"; // nome final
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}

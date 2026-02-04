@@ -655,6 +655,26 @@ section {
     transform: translateY(-2px);
 }
 
+.btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 34px;
+    background: linear-gradient(135deg, #6a5acd, #8a6cff);
+    color: #f1f1f6;
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 10px 30px rgba(138, 108, 255, 0.5);
+}
+
+
 .project-card {
     background: #1b1b2b;
     border-radius: 12px;
