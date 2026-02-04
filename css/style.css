@@ -608,6 +608,53 @@ section {
     }
 }
 
+.contact-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.contact-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.gmail-link {
+    background-color: #EA4335;
+    color: white;
+}
+
+.gmail-link:hover {
+    background-color: #c5362d;
+    transform: translateY(-2px);
+}
+
+.whatsapp-link {
+    background-color: #25D366;
+    color: white;
+}
+
+.whatsapp-link:hover {
+    background-color: #1eab52;
+    transform: translateY(-2px);
+}
+
+.instagram-link {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    color: white;
+}
+
+.instagram-link:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+}
+
 .project-card {
     background: #1b1b2b;
     border-radius: 12px;
