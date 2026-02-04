@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remote Access - Vritik Valabdás</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <header class="project-hero">
+        <a href="index.html" class="back-link">← Portfólio</a>
+        <h1>Remote Access (LAN)</h1>
+        <p>Acesso remoto seguro com Java, sockets e criptografia</p>
+    </header>
+
+    <main class="project-content">
+
+        <!-- VISÃO GERAL -->
+        <section class="project-overview">
+            <h2>Visão Geral</h2>
+            <p>
+                Aplicação desktop desenvolvida em <strong>Java</strong> que permite
+                acesso remoto entre computadores através de uma rede local (LAN).
+                O sistema implementa captura de ecrã em tempo real, comunicação
+                cliente-servidor, criptografia AES e interface gráfica interativa.
+            </p>
+        </section>
+
+        <!-- FUNCIONALIDADES -->
+        <section class="project-section">
+            <h2>Funcionalidades</h2>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <strong>Acesso Remoto em Tempo Real</strong>
+                    <p>Captura e transmissão contínua do ecrã via sockets TCP.</p>
+                </div>
+                <div class="feature-item">
+                    <strong>Comunicação Cliente-Servidor</strong>
+                    <p>Arquitetura dedicada com separação clara de responsabilidades.</p>
+                </div>
+                <div class="feature-item">
+                    <strong>Criptografia AES</strong>
+                    <p>Dados transmitidos de forma segura usando cifra simétrica.</p>
+                </div>
+                <div class="feature-item">
+                    <strong>Compressão de Imagem</strong>
+                    <p>Redução do tamanho das imagens para melhor desempenho.</p>
+                </div>
+                <div class="feature-item">
+                    <strong>Interface Gráfica</strong>
+                    <p>UI em Swing com logs, estado do servidor e controlos visuais.</p>
+                </div>
+                <div class="feature-item">
+                    <strong>Execução em LAN</strong>
+                    <p>Deteção automática de IP local e ligação direta entre máquinas.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- STACK -->
+        <section class="project-section">
+            <h2>Stack Técnica</h2>
+            <div class="tech-stack">
+                <span class="tech-tag">Java</span>
+                <span class="tech-tag">Swing</span>
+                <span class="tech-tag">Sockets TCP/IP</span>
+                <span class="tech-tag">Multithreading</span>
+                <span class="tech-tag">AES Encryption</span>
+                <span class="tech-tag">Image I/O</span>
+            </div>
+        </section>
+
+        <!-- ARQUITETURA -->
+        <section class="project-section">
+            <h2>Arquitetura do Projeto</h2>
+            <div class="architecture-block">
+                <div class="arch-column">
+                    <h3>Client</h3>
+                    <code>RemoteClient.java</code>
+                    <code>Socket TCP</code>
+                    <code>Receção de imagens</code>
+                </div>
+                <div class="arch-column">
+                    <h3>Server</h3>
+                    <code>RemoteServer.java</code>
+                    <code>Robot API</code>
+                    <code>Screen Capture</code>
+                </div>
+                <div class="arch-column">
+                    <h3>Segurança</h3>
+                    <code>CryptoUtils.java</code>
+                    <code>AES Cipher</code>
+                    <code>Cipher Streams</code>
+                </div>
+                <div class="arch-column">
+                    <h3>Suporte</h3>
+                    <code>ImageCompressor.java</code>
+                    <code>InputEventDTO.java</code>
+                    <code>MainUI.java</code>
+                </div>
+            </div>
+        </section>
+
+        <!-- IMPLEMENTAÇÃO -->
+        <section class="project-section">
+            <h2>Implementação Técnica</h2>
+            <div class="implementation-details">
+                <div class="detail-card">
+                    <strong>Captura de Ecrã</strong>
+                    <p>
+                        Utilização da classe <code>Robot</code> para capturar o ecrã
+                        do servidor em intervalos regulares (~30 FPS).
+                    </p>
+                </div>
+                <div class="detail-card">
+                    <strong>Transmissão Segura</strong>
+                    <p>
+                        As imagens são enviadas através de streams criptografadas
+                        usando AES para proteger os dados.
+                    </p>
+                </div>
+                <div class="detail-card">
+                    <strong>Multithreading</strong>
+                    <p>
+                        Threads dedicadas garantem fluidez na comunicação
+                        e atualização contínua do ecrã remoto.
+                    </p>
+                </div>
+                <div class="detail-card">
+                    <strong>Interface Interativa</strong>
+                    <p>
+                        Interface Swing com logs em tempo real,
+                        indicadores de estado e controlo do servidor/cliente.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ESTADO -->
+        <section class="project-section">
+            <h2>Estado & Evolução</h2>
+            <p>
+                <strong>Estado atual:</strong> Sistema funcional para acesso remoto
+                em rede local com transmissão segura.
+            </p>
+            <p>
+                <strong>Evoluções futuras:</strong> controlo de teclado e rato,
+                autenticação avançada, suporte WAN e otimização de largura de banda.
+            </p>
+        </section>
+
+        <!-- AÇÕES -->
+        <div class="project-actions">
+            <a href="https://github.com/vritik246800/Java_fun_Projects/tree/main/Apps/Remote_Access" target="_blank"
+                class="btn-primary">
+                Ver Código no GitHub
+            </a>
+        </div>
+
+    </main>
+
+    <footer>
+        © 2026 — Vritik Valabdás
+    </footer>
+
+</body>
+
+</html>
