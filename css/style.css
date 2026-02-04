@@ -81,7 +81,7 @@ body {
 /* TEXTO PRINCIPAL */
 .hero-name {
     font-family: 'Alex Brush', cursive;
-    font-size: 4.8rem;
+    font-size: 5.8rem;
     color: #ffffff;
     position: relative;
     display: inline-block;
@@ -581,6 +581,12 @@ section {
 
 #projects {
     padding: 4rem 2rem;
+    h2 {
+        text-align: left;
+        color: #6a5acd;
+        font-size: 25px;
+        margin-bottom: 2rem;
+    }
 }
 
 .projects-grid {

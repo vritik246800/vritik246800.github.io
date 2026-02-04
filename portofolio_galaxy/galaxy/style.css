@@ -1,0 +1,92 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  margin: 0;
+  background: #000;
+}
+
+#galaxy {
+  position: fixed;
+  inset: 0;
+  display: block;
+}
+
+.controls {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid rgba(125, 249, 255, 0.3);
+  color: #7df9ff;
+  font-size: 12px;
+  max-width: 250px;
+  backdrop-filter: blur(10px);
+}
+
+.control-group {
+  margin-bottom: 15px;
+}
+
+.control-group label {
+  display: block;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+  font-size: 10px;
+  opacity: 0.7;
+}
+
+.value {
+  float: right;
+}
+
+input[type="range"] {
+  width: 100%;
+  height: 4px;
+  background: rgba(125, 249, 255, 0.2);
+  border-radius: 2px;
+  outline: none;
+  appearance: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  background: #7df9ff;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #7df9ff;
+  cursor: pointer;
+}
+
+input[type="color"] {
+  width: 40px;
+  height: 30px;
+  border: 1px solid #7df9ff;
+  background: transparent;
+  cursor: pointer;
+}
+
+.color-picker {
+  display: flex;
+  gap: 10px;
+}
+
+.info {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  color: rgba(125, 249, 255, 0.6);
+  font-size: 11px;
+}
