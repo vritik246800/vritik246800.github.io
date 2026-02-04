@@ -8,22 +8,25 @@
     <title>Vritik Valabdás | Portfólio</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/picture/favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
 
     <header class="hero">
-        <h1>Vritik Valabdás</h1>
+        <h1 id="hero-name"></h1>
+
         <p id="subtitle">Desenvolvedor Java | Sistemas | Redes | GUI</p>
 
-        <div class="hero-buttons">
+        <div class="hero-buttons" >
             <a href="#projects">Projetos</a>
             <a href="about.html">Sobre</a>
             <button onclick="generatePDF()">Download PDF</button>
         </div>
     </header>
 
-    
+
 
     <section id="projects">
         <h2>Projetos</h2>
@@ -39,8 +42,7 @@
             </div>
 
             <div class="project-card">
-                <img src="assets/picture/No Image.png" alt="Gestão Supermercado"
-                    onerror="this.style.display='none'">
+                <img src="assets/picture/No Image.png" alt="Gestão Supermercado" onerror="this.style.display='none'">
                 <h3>Gestão de Supermercado</h3>
                 <p>Sistema desktop para inventário e PDFs.</p>
                 <span>Java • Swing • iText PDF</span>
@@ -88,8 +90,7 @@
             </div>
 
             <div class="project-card">
-                <img src="assets/screenshots/remote_access.png" alt="LAN Transfer"
-                    onerror="this.style.display='none'">
+                <img src="assets/screenshots/remote_access.png" alt="LAN Transfer" onerror="this.style.display='none'">
                 <h3>Remote Access</h3>
                 <p>Pequenos projectos </p>
                 <span>Java • LAN</span>
@@ -115,6 +116,8 @@
 
     <script src="js/pdf.js"></script>
     <script src="js/lang.js"></script>
+    <script src="js/hero-effects.js"></script>
+
 </body>
 
 </html>
