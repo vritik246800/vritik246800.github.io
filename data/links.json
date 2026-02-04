@@ -1,0 +1,28 @@
+{
+  "social": [
+    {
+      "name": "GitHub",
+      "url": "https://github.com/vritik246800",
+      "class": "github-link",
+      "icon": "github"
+    },
+    {
+      "name": "Gmail",
+      "url": "mailto:vritikvalabdas@gmail.com",
+      "class": "gmail-link",
+      "icon": "gmail"
+    },
+    {
+      "name": "WhatsApp",
+      "url": "https://wa.me/258844731974",
+      "class": "whatsapp-link",
+      "icon": "whatsapp"
+    },
+    {
+      "name": "Instagram",
+      "url": "https://instagram.com/vritik_vd",
+      "class": "instagram-link",
+      "icon": "instagram"
+    }
+  ]
+}
