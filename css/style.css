@@ -99,6 +99,13 @@ body {
     transform: rotateX(12deg) rotateY(-12deg) scale(1.05);
 }
 
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+
 /* PARTÍCULAS */
 .particle {
     position: absolute;
@@ -194,6 +201,11 @@ body {
   transition: 0.3s ease;
 }
 
+.tech-track img {
+    height: clamp(40px, 8vw, 70px);
+}
+
+
 .tech-track img:hover {
   filter: grayscale(0) drop-shadow(0 0 10px #a855f7);
   transform: scale(1.1);
@@ -226,8 +238,11 @@ body {
 }
 
 section {
-    padding: 50px 10%;
+    padding: 2.5rem 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
 }
+
 
 .project-card {
     background: #1b1b2b;
@@ -481,7 +496,7 @@ section {
 
 .skill-item {
     background: #1b1b2b;
-    padding: 20px;
+    padding: 14px 16px;
     border-radius: 10px;
     border: 1px solid rgba(106, 90, 205, 0.3);
     transition: all 0.3s ease;
