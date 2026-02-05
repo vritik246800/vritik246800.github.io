@@ -1,5 +1,5 @@
 const canvas = document.getElementById('galaxy');
-const ctx = canvas.getContext('2d');
+const ctx = canvas.getContext('2d', { alpha: false });
 let w, h;
 
 function resize() {
@@ -22,11 +22,11 @@ const params = {
   size: 1.5
 };
 
-// Câmera 3D simplificada
+// Câmera 3D
 let camera = {
   x: 0,
   y: 0,
-  z: 0,
+  z: 8,
   rotX: -0.3,
   rotY: 0
 };
@@ -34,6 +34,8 @@ let camera = {
 let particles = [];
 let isDragging = false;
 let lastX = 0, lastY = 0;
+let autoRotate = true;
+let autoRotateSpeed = 0.001;
 
 // Gerar galáxia
 function generateGalaxy() {
@@ -53,7 +55,7 @@ function generateGalaxy() {
     const g = colorIn.g + (colorOut.g - colorIn.g) * mixRatio;
     const b = colorIn.b + (colorOut.b - colorIn.b) * mixRatio;
 
-    // Randomização com poder
+    // Randomização
     const randX = Math.pow(Math.random(), params.power) * 
                   (Math.random() < 0.5 ? 1 : -1) * 
                   radius * params.randomness;
@@ -69,7 +71,7 @@ function generateGalaxy() {
       y: randY,
       z: Math.sin(branchAngle + spinAngle) * radius + randZ,
       r, g, b,
-      size: params.size * (1 - radius / params.radius * 0.5)
+      size: params.size * (1 - radius / params.radius * 0.3)
     });
   }
 }
@@ -85,42 +87,42 @@ function hexToRgb(hex) {
 
 // Projeção 3D -> 2D
 function project(x, y, z) {
-  // Rotação
   const cosX = Math.cos(camera.rotX);
   const sinX = Math.sin(camera.rotX);
   const cosY = Math.cos(camera.rotY);
   const sinY = Math.sin(camera.rotY);
 
-  // Rotacionar em Y
+  // Rotação Y
   let x1 = x * cosY - z * sinY;
   let z1 = x * sinY + z * cosY;
   
-  // Rotacionar em X
+  // Rotação X
   let y1 = y * cosX - z1 * sinX;
   let z2 = y * sinX + z1 * cosX;
 
-  // Translação da câmera
+  // Translação
   z2 += camera.z;
   y1 += camera.y;
   x1 += camera.x;
 
   // Perspectiva
-  const scale = 400 / (z2 + 400);
+  const scale = 350 / (z2 + 350);
   
   return {
-    x: w / 2 + x1 * scale * 100,
-    y: h / 2 - y1 * scale * 100,
+    x: w / 2 + x1 * scale * 90,
+    y: h / 2 - y1 * scale * 90,
     scale: scale,
     z: z2
   };
 }
 
-// Render
+// Render limpo sem grain
 function render() {
-  ctx.fillStyle = 'rgba(0, 0, 0, 0.3)';
+  // Clear completo em vez de fade - elimina grain
+  ctx.fillStyle = '#000000';
   ctx.fillRect(0, 0, w, h);
 
-  // Ordenar por profundidade (painter's algorithm)
+  // Ordenar por profundidade
   const projected = particles.map(p => ({
     ...p,
     proj: project(p.x, p.y, p.z)
@@ -131,26 +133,33 @@ function render() {
   projected.forEach(p => {
     const { x, y, scale } = p.proj;
     
-    if (x < -50 || x > w + 50 || y < -50 || y > h + 50) return;
+    if (x < -100 || x > w + 100 || y < -100 || y > h + 100) return;
 
-    const size = p.size * scale * 3;
-    const alpha = Math.min(1, scale * 0.8);
+    const size = p.size * scale * 2.5;
+    const alpha = Math.min(0.9, scale * 0.7);
 
-    const gradient = ctx.createRadialGradient(x, y, 0, x, y, size);
+    // Partícula mais suave com glow
+    const gradient = ctx.createRadialGradient(x, y, 0, x, y, size * 1.2);
     gradient.addColorStop(0, `rgba(${p.r}, ${p.g}, ${p.b}, ${alpha})`);
-    gradient.addColorStop(0.5, `rgba(${p.r}, ${p.g}, ${p.b}, ${alpha * 0.5})`);
+    gradient.addColorStop(0.3, `rgba(${p.r}, ${p.g}, ${p.b}, ${alpha * 0.6})`);
+    gradient.addColorStop(0.7, `rgba(${p.r}, ${p.g}, ${p.b}, ${alpha * 0.2})`);
     gradient.addColorStop(1, 'transparent');
 
     ctx.fillStyle = gradient;
     ctx.beginPath();
-    ctx.arc(x, y, size, 0, Math.PI * 2);
+    ctx.arc(x, y, size * 1.2, 0, Math.PI * 2);
     ctx.fill();
   });
 
   ctx.globalCompositeOperation = 'source-over';
 }
 
+// Auto-rotação suave
 function animate() {
+  if (autoRotate) {
+    camera.rotY += autoRotateSpeed;
+  }
+  
   render();
   requestAnimationFrame(animate);
 }
@@ -158,6 +167,7 @@ function animate() {
 // Controles
 canvas.addEventListener('mousedown', e => {
   isDragging = true;
+  autoRotate = false;
   lastX = e.clientX;
   lastY = e.clientY;
 });
@@ -177,18 +187,34 @@ canvas.addEventListener('mousemove', e => {
   }
 });
 
-canvas.addEventListener('mouseup', () => isDragging = false);
-canvas.addEventListener('mouseleave', () => isDragging = false);
+canvas.addEventListener('mouseup', () => {
+  isDragging = false;
+  // Reativa auto-rotação após 2s de inatividade
+  setTimeout(() => {
+    if (!isDragging) autoRotate = true;
+  }, 2000);
+});
+
+canvas.addEventListener('mouseleave', () => {
+  isDragging = false;
+});
 
 canvas.addEventListener('wheel', e => {
   e.preventDefault();
+  autoRotate = false;
   camera.z += e.deltaY * 0.01;
   camera.z = Math.max(3, Math.min(20, camera.z));
+  
+  // Reativa auto-rotação
+  setTimeout(() => {
+    if (!isDragging) autoRotate = true;
+  }, 2000);
 }, { passive: false });
 
 // Touch
 canvas.addEventListener('touchstart', e => {
   isDragging = true;
+  autoRotate = false;
   lastX = e.touches[0].clientX;
   lastY = e.touches[0].clientY;
 });
@@ -199,14 +225,21 @@ canvas.addEventListener('touchmove', e => {
     const dy = e.touches[0].clientY - lastY;
     
     camera.rotY += dx * 0.005;
-    camera.rotX += dy * 0.005;
+    camera.rotX -= dy * 0.005;
+    
+    camera.rotX = Math.max(-Math.PI / 2, Math.min(Math.PI / 2, camera.rotX));
     
     lastX = e.touches[0].clientX;
     lastY = e.touches[0].clientY;
   }
 });
 
-canvas.addEventListener('touchend', () => isDragging = false);
+canvas.addEventListener('touchend', () => {
+  isDragging = false;
+  setTimeout(() => {
+    if (!isDragging) autoRotate = true;
+  }, 2000);
+});
 
 // UI Controls
 function setupControls() {
