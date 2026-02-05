@@ -13,3 +13,11 @@ function toggleLang() {
     lang = "pt";
   }
 }
+
+function getCurrentYear() {
+    return new Date().getFullYear();
+}
+
+// aplica no footer
+document.getElementById("currentYear").textContent = getCurrentYear();
+
