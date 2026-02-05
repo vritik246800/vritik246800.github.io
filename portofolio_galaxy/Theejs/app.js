@@ -27,37 +27,79 @@ renderer.setSize(window.innerWidth, window.innerHeight)
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 
 // ==========================
-// Objetos 3D
+// Átomo com Núcleo e Eletrões
 // ==========================
 
-/** @type {THREE.Mesh} */
-const cube = new THREE.Mesh(
-  new THREE.BoxGeometry(1.5, 1.5, 1.5),
+// Núcleo (protões + neutrões)
+const nucleus = new THREE.Mesh(
+  new THREE.SphereGeometry(0.5, 32, 32),
   new THREE.MeshStandardMaterial({
-    color: 0x00ffff,
-    metalness: 0.6,
+    color: 0xff3333,
+    emissive: 0x333fff,
+    emissiveIntensity: 0.5,
+    metalness: 0.8,
     roughness: 0.2
   })
 )
-scene.add(cube)
+scene.add(nucleus)
 
-/** @type {THREE.Mesh} */
-const sphere = new THREE.Mesh(
-  new THREE.SphereGeometry(0.8, 32, 32),
-  new THREE.MeshStandardMaterial({
-    color: 0xff00ff,
-    metalness: 0.3,
-    roughness: 0.4
+// Eletrões (3 órbitas diferentes)
+const electrons = []
+const electronMaterial = new THREE.MeshStandardMaterial({
+  color: 0x00ffff,
+  emissive: 0x33ff99,
+  emissiveIntensity: 0.6,
+  metalness: 0.9,
+  roughness: 0.1
+})
+
+for (let i = 0; i < 25; i++) {
+  const electron = new THREE.Mesh(
+    new THREE.SphereGeometry(0.12, 16, 16),
+    electronMaterial.clone()
+  )
+  electrons.push({
+    mesh: electron,
+    orbitRadius: 1.2 + i * 0.5,
+    speed: 0.8 + i * 0.05,
+    phase: (i * Math.PI * 2) / 10,
+    tiltX: Math.random() * Math.PI * 1.9,
+    tiltZ: Math.random() * Math.PI * -1.9
   })
-)
-sphere.position.x = 3
-scene.add(sphere)
+  scene.add(electron)
+}
+
+// Órbitas visuais
+const orbitMaterial = new THREE.LineBasicMaterial({
+  color: 0x00000f00,
+  transparent: false,
+  opacity: 0.1
+})
+
+electrons.forEach(e => {
+  const points = []
+  for (let i = 0; i <= 64; i++) {
+    const angle = (i / 64) * Math.PI * 2
+    points.push(
+      new THREE.Vector3(
+        Math.cos(angle) * e.orbitRadius,
+        0,
+        Math.sin(angle) * e.orbitRadius
+      )
+    )
+  }
+  const orbitGeometry = new THREE.BufferGeometry().setFromPoints(points)
+  const orbitLine = new THREE.Line(orbitGeometry, orbitMaterial)
+  orbitLine.rotation.x = e.tiltX
+  orbitLine.rotation.z = e.tiltZ
+  scene.add(orbitLine)
+})
 
 // ==========================
 // Luzes
 // ==========================
 
-const ambient = new THREE.AmbientLight(0xffffff, 0.4)
+const ambient = new THREE.AmbientLight(0xffffff, 0.5)
 scene.add(ambient)
 
 const directional = new THREE.DirectionalLight(0xffffff, 1)
@@ -70,12 +112,22 @@ scene.add(directional)
 
 /** @param {number} time */
 function animate(time) {
-  const t = time * 0.001
+  const t = time * 0.0008
 
-  cube.rotation.x = t
-  cube.rotation.y = t
+  // Rotação do núcleo
+  nucleus.rotation.x = t * 0.3
+  nucleus.rotation.y = t * 0.5
 
-  sphere.position.y = Math.sin(t) * 1.2
+  // Movimento orbital dos eletrões
+  electrons.forEach(e => {
+    const angle = t * e.speed + e.phase
+    e.mesh.position.x = Math.cos(angle) * e.orbitRadius
+    e.mesh.position.z = Math.sin(angle) * e.orbitRadius
+    
+    // Aplicar inclinação orbital
+    const pos = e.mesh.position.clone()
+    e.mesh.position.y = pos.x * Math.sin(e.tiltX) + pos.z * Math.sin(e.tiltZ)
+  })
 
   renderer.render(scene, camera)
   requestAnimationFrame(animate)
