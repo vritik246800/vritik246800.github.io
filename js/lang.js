@@ -21,3 +21,9 @@ function getCurrentYear() {
 // aplica no footer
 document.getElementById("currentYear").textContent = getCurrentYear();
 
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("/service-worker.js")
+    .then(() => console.log("PWA ativa"))
+    .catch(err => console.error("Erro SW:", err));
+}
+
