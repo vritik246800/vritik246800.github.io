@@ -1,0 +1,106 @@
+[
+  {
+    "name": "yannis",
+    "profiles": [
+      {
+        "platform": "Instagram",
+        "url": "https://instagram.com/yannis"
+      },
+      {
+        "platform": "Facebook",
+        "url": "https://facebook.com/search/top?q=yannis"
+      },
+      {
+        "platform": "TikTok",
+        "url": "https://www.tiktok.com/search?q=yannis"
+      },
+      {
+        "platform": "X",
+        "url": "https://x.com/search?q=yannis"
+      }
+    ],
+    "images": [],
+    "sources": [
+      "https://www.google.com/search?q=yannis"
+    ],
+    "timestamp": "2026-02-06T16:29:24.342Z"
+  },
+  {
+    "name": "yasin magno",
+    "profiles": [
+      {
+        "platform": "Instagram",
+        "url": "https://instagram.com/yasinmagno"
+      },
+      {
+        "platform": "Facebook",
+        "url": "https://facebook.com/search/top?q=yasin%20magno"
+      },
+      {
+        "platform": "TikTok",
+        "url": "https://www.tiktok.com/search?q=yasin%20magno"
+      },
+      {
+        "platform": "X",
+        "url": "https://x.com/search?q=yasin%20magno"
+      }
+    ],
+    "images": [],
+    "sources": [
+      "https://www.google.com/search?q=yasin%20magno"
+    ],
+    "timestamp": "2026-02-06T16:29:46.269Z"
+  },
+  {
+    "name": "helder vuca junior",
+    "profiles": [
+      {
+        "platform": "Instagram",
+        "url": "https://instagram.com/heldervucajunior"
+      },
+      {
+        "platform": "Facebook",
+        "url": "https://facebook.com/search/top?q=helder%20vuca%20junior"
+      },
+      {
+        "platform": "TikTok",
+        "url": "https://www.tiktok.com/search?q=helder%20vuca%20junior"
+      },
+      {
+        "platform": "X",
+        "url": "https://x.com/search?q=helder%20vuca%20junior"
+      }
+    ],
+    "images": [],
+    "sources": [
+      "https://www.google.com/search?q=helder%20vuca%20junior"
+    ],
+    "timestamp": "2026-02-06T16:42:15.676Z"
+  },
+  {
+    "name": "yasin",
+    "profiles": [
+      {
+        "platform": "Instagram",
+        "url": "https://instagram.com/yasin"
+      },
+      {
+        "platform": "Facebook",
+        "url": "https://facebook.com/search/top?q=yasin"
+      },
+      {
+        "platform": "TikTok",
+        "url": "https://www.tiktok.com/search?q=yasin"
+      },
+      {
+        "platform": "X",
+        "url": "https://x.com/search?q=yasin"
+      }
+    ],
+    "images": [],
+    "sources": [
+      "https://www.google.com/search?q=yasin"
+    ],
+    "timestamp": "2026-02-06T16:48:44.131Z"
+  }
+]
