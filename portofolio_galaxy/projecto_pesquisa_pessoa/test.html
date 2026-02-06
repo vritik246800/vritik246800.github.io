@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>People Web Search - Página de Teste</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+    
+    .container {
+      background: white;
+      border-radius: 20px;
+      padding: 3rem;
+      max-width: 800px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+    
+    h1 {
+      color: #667eea;
+      margin-bottom: 1rem;
+      font-size: 2.5rem;
+    }
+    
+    .subtitle {
+      color: #666;
+      margin-bottom: 2rem;
+      font-size: 1.1rem;
+    }
+    
+    .section {
+      margin-bottom: 2rem;
+      padding: 1.5rem;
+      background: #f8f9fa;
+      border-radius: 12px;
+      border-left: 4px solid #667eea;
+    }
+    
+    h2 {
+      color: #333;
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+    }
+    
+    .test-names {
+      display: grid;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+    
+    .test-name {
+      background: white;
+      padding: 1rem;
+      border-radius: 8px;
+      border: 2px solid #e0e0e0;
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+    
+    .test-name:hover {
+      border-color: #667eea;
+      transform: translateX(5px);
+    }
+    
+    .test-name strong {
+      color: #667eea;
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+    
+    .test-name small {
+      color: #999;
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: 1rem 2rem;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: all 0.3s;
+      margin-top: 1rem;
+      text-align: center;
+    }
+    
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+    }
+    
+    .status {
+      display: grid;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+    
+    .status-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .status-icon {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+    }
+    
+    .status-icon.ok {
+      background: #10b981;
+    }
+    
+    .status-icon.warn {
+      background: #f59e0b;
+    }
+    
+    .note {
+      background: #fff3cd;
+      border-left: 4px solid #ffc107;
+      padding: 1rem;
+      border-radius: 8px;
+      margin-top: 1rem;
+    }
+    
+    .note strong {
+      color: #856404;
+    }
+    
+    code {
+      background: #2d3748;
+      color: #68d391;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      font-family: 'Courier New', monospace;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🔍 People Web Search</h1>
+    <p class="subtitle">Página de Teste e Demonstração</p>
+    
+    <div class="section">
+      <h2>✅ Status do Sistema</h2>
+      <div class="status" id="systemStatus">
+        <div class="status-item">
+          <div class="status-icon ok"></div>
+          <span>Verificando arquivos...</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="section">
+      <h2>🧪 Nomes para Teste</h2>
+      <p>Use estes nomes para testar a aplicação:</p>
+      <div class="test-names">
+        <div class="test-name" onclick="copyName('Elon Musk')">
+          <strong>Elon Musk</strong>
+          <small>Figura pública conhecida - muitos resultados esperados</small>
+        </div>
+        <div class="test-name" onclick="copyName('Bill Gates')">
+          <strong>Bill Gates</strong>
+          <small>Resultados variados em todas as plataformas</small>
+        </div>
+        <div class="test-name" onclick="copyName('Cristiano Ronaldo')">
+          <strong>Cristiano Ronaldo</strong>
+          <small>Grande presença em redes sociais</small>
+        </div>
+        <div class="test-name" onclick="copyName('João Silva')">
+          <strong>João Silva</strong>
+          <small>Nome comum - teste de quantidade de resultados</small>
+        </div>
+      </div>
+      <div class="note">
+        <strong>💡 Dica:</strong> Clique em qualquer nome para copiá-lo automaticamente!
+      </div>
+    </div>
+    
+    <div class="section">
+      <h2>🎯 Como Testar</h2>
+      <ol style="margin-left: 1.5rem; color: #555; line-height: 1.8;">
+        <li>Clique no botão "Abrir Aplicação" abaixo</li>
+        <li>Use um dos nomes de teste acima</li>
+        <li>Teste sem API primeiro (modo básico)</li>
+        <li>Configure API keys para teste completo</li>
+        <li>Tente pesquisa profunda e com imagens</li>
+        <li>Verifique o histórico funcionando</li>
+        <li>Exporte um resultado em JSON</li>
+      </ol>
+    </div>
+    
+    <div class="section">
+      <h2>⚙️ Configuração Rápida</h2>
+      <p style="margin-bottom: 1rem; color: #555;">Para testar com APIs (opcional mas recomendado):</p>
+      <ol style="margin-left: 1.5rem; color: #555; line-height: 1.8;">
+        <li>Obtenha API Key: <code>console.cloud.google.com</code></li>
+        <li>Crie Search Engine: <code>programmablesearchengine.google.com</code></li>
+        <li>Cole as chaves no app (botão ⚙️ Configurações)</li>
+      </ol>
+      <div class="note" style="margin-top: 1rem;">
+        <strong>ℹ️ Nota:</strong> Sem API, o app funciona em modo básico com links diretos.
+      </div>
+    </div>
+    
+    <div class="section">
+      <h2>🐛 Debug Console</h2>
+      <p style="color: #555; margin-bottom: 0.5rem;">Abra o console (F12) e digite:</p>
+      <div style="background: #2d3748; padding: 1rem; border-radius: 8px; margin-top: 0.5rem;">
+        <code style="display: block; background: transparent; padding: 0;">OSINT.stats()</code>
+        <code style="display: block; background: transparent; padding: 0; margin-top: 0.5rem;">OSINT.export()</code>
+      </div>
+    </div>
+    
+    <a href="index.html" class="btn">
+      🚀 Abrir Aplicação
+    </a>
+    
+    <div style="margin-top: 2rem; padding-top: 2rem; border-top: 2px solid #e0e0e0; color: #999; text-align: center;">
+      <p>Desenvolvido com HTML, CSS e JavaScript puro</p>
+      <p style="margin-top: 0.5rem;">Nenhum framework necessário 🎉</p>
+    </div>
+  </div>
+  
+  <script>
+    // Verifica status dos arquivos
+    async function checkFiles() {
+      const files = [
+        'index.html',
+        'css/style.css',
+        'js/config.js',
+        'js/storage.js',
+        'js/search.js',
+        'js/ui.js',
+        'js/app.js'
+      ];
+      
+      const statusDiv = document.getElementById('systemStatus');
+      statusDiv.innerHTML = '';
+      
+      for (const file of files) {
+        const item = document.createElement('div');
+        item.className = 'status-item';
+        
+        try {
+          const response = await fetch(file, { method: 'HEAD' });
+          const icon = document.createElement('div');
+          icon.className = response.ok ? 'status-icon ok' : 'status-icon warn';
+          
+          const text = document.createElement('span');
+          text.textContent = response.ok ? `✓ ${file}` : `✗ ${file} (não encontrado)`;
+          
+          item.appendChild(icon);
+          item.appendChild(text);
+        } catch (error) {
+          const icon = document.createElement('div');
+          icon.className = 'status-icon warn';
+          
+          const text = document.createElement('span');
+          text.textContent = `✗ ${file} (erro ao verificar)`;
+          
+          item.appendChild(icon);
+          item.appendChild(text);
+        }
+        
+        statusDiv.appendChild(item);
+      }
+    }
+    
+    // Copia nome para clipboard
+    function copyName(name) {
+      navigator.clipboard.writeText(name).then(() => {
+        alert(`Nome "${name}" copiado! Cole no campo de busca do app.`);
+      });
+    }
+    
+    // Verifica arquivos ao carregar
+    checkFiles();
+  </script>
+</body>
+</html>

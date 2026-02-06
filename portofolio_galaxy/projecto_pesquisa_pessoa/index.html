@@ -3,72 +3,168 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>People Web Search</title>
-
+  <title>People Web Search - OSINT Tool</title>
+  
   <!-- CSS -->
   <link rel="stylesheet" href="css/style.css" />
-
-  <!-- Icons (opcional) -->
+  
+  <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
 <body>
 
   <!-- Header -->
   <header class="app-header">
-    <h1>🔍 People Web Search</h1>
-    <p>Pesquisa de informações públicas sobre pessoas</p>
+    <h1><i class="fas fa-search-location"></i> People Web Search</h1>
+    <p>Ferramenta OSINT para pesquisa de informações públicas sobre pessoas</p>
   </header>
+
+  <!-- Configuration Panel -->
+  <section class="config-section">
+    <button id="configBtn" class="config-toggle">
+      <i class="fas fa-cog"></i> Configurações API
+    </button>
+    
+    <div id="configPanel" class="config-panel hidden">
+      <div class="config-content">
+        <h3><i class="fas fa-key"></i> Chaves API (Opcional)</h3>
+        <p class="config-note">Para melhores resultados, adicione suas chaves API gratuitas:</p>
+        
+        <div class="config-field">
+          <label for="googleApiKey">
+            <i class="fab fa-google"></i> Google Custom Search API Key
+            <a href="https://developers.google.com/custom-search/v1/introduction" target="_blank" class="help-link">
+              <i class="fas fa-question-circle"></i>
+            </a>
+          </label>
+          <input type="text" id="googleApiKey" placeholder="Cole sua API key aqui..." />
+        </div>
+        
+        <div class="config-field">
+          <label for="googleSearchId">
+            <i class="fas fa-search"></i> Google Search Engine ID
+            <a href="https://programmablesearchengine.google.com/" target="_blank" class="help-link">
+              <i class="fas fa-question-circle"></i>
+            </a>
+          </label>
+          <input type="text" id="googleSearchId" placeholder="Cole seu Search Engine ID..." />
+        </div>
+        
+        <button id="saveConfigBtn" class="btn-save">
+          <i class="fas fa-save"></i> Salvar Configuração
+        </button>
+        
+        <p class="config-footer">
+          <i class="fas fa-info-circle"></i> 
+          Sem API keys, o app funciona em modo básico (links diretos)
+        </p>
+      </div>
+    </div>
+  </section>
 
   <!-- Search Section -->
   <section class="search-section">
-    <input 
-      type="text" 
-      id="fullName" 
-      placeholder="Digite o nome completo..." 
-      autocomplete="off"
-    />
-    <button id="searchBtn">
-      <i class="fas fa-search"></i> Pesquisar
-    </button>
+    <div class="search-container">
+      <input 
+        type="text" 
+        id="fullName" 
+        placeholder="Digite o nome completo da pessoa..." 
+        autocomplete="off"
+      />
+      <button id="searchBtn" class="btn-search">
+        <i class="fas fa-search"></i> Pesquisar
+      </button>
+      <button id="clearBtn" class="btn-clear">
+        <i class="fas fa-eraser"></i>
+      </button>
+    </div>
+    
+    <div class="search-options">
+      <label class="checkbox-label">
+        <input type="checkbox" id="deepSearch" />
+        <span>Pesquisa Profunda (mais lento)</span>
+      </label>
+      <label class="checkbox-label">
+        <input type="checkbox" id="includeImages" checked />
+        <span>Incluir Imagens</span>
+      </label>
+    </div>
   </section>
+
+  <!-- Loading Indicator -->
+  <div id="loadingIndicator" class="loading-indicator hidden">
+    <div class="spinner"></div>
+    <p>Pesquisando informações...</p>
+  </div>
 
   <!-- Main Content -->
   <main class="content">
 
     <!-- Results -->
     <section class="results">
-      <h2>Resultados</h2>
+      <div class="results-header">
+        <h2><i class="fas fa-list"></i> Resultados</h2>
+        <button id="exportBtn" class="btn-export hidden">
+          <i class="fas fa-download"></i> Exportar JSON
+        </button>
+      </div>
 
-      <!-- Profiles -->
+      <!-- Person Info Card -->
+      <div class="card" id="personInfo">
+        <h3><i class="fas fa-user"></i> Informações Básicas</h3>
+        <div id="personInfoContent" class="person-info-content">
+          <p class="empty-state">Faça uma pesquisa para ver os resultados</p>
+        </div>
+      </div>
+
+      <!-- Social Media Profiles -->
       <div class="card" id="profiles">
-        <h3>Perfis encontrados</h3>
+        <h3><i class="fas fa-share-alt"></i> Perfis em Redes Sociais</h3>
         <ul class="profile-list">
-          <!-- JS inject -->
+          <li class="empty-state">Nenhum perfil encontrado</li>
+        </ul>
+      </div>
+
+      <!-- Web Search Results -->
+      <div class="card" id="webResults">
+        <h3><i class="fab fa-google"></i> Resultados da Web</h3>
+        <ul class="web-results-list">
+          <li class="empty-state">Nenhum resultado encontrado</li>
         </ul>
       </div>
 
       <!-- Images -->
       <div class="card" id="images">
-        <h3>Imagens</h3>
+        <h3><i class="fas fa-images"></i> Imagens Relacionadas</h3>
         <div class="image-grid">
-          <!-- JS inject -->
+          <p class="empty-state">Nenhuma imagem encontrada</p>
         </div>
       </div>
 
       <!-- Sources -->
       <div class="card" id="sources">
-        <h3>Fontes</h3>
+        <h3><i class="fas fa-link"></i> Fontes e Links</h3>
         <ul class="source-list">
-          <!-- JS inject -->
+          <li class="empty-state">Nenhuma fonte disponível</li>
         </ul>
       </div>
     </section>
 
-    <!-- History -->
+    <!-- History Sidebar -->
     <aside class="history">
-      <h2>Histórico</h2>
+      <div class="history-header">
+        <h2><i class="fas fa-history"></i> Histórico</h2>
+        <button id="clearHistoryBtn" class="btn-clear-history" title="Limpar histórico">
+          <i class="fas fa-trash"></i>
+        </button>
+      </div>
+      
+      <div class="history-stats">
+        <span id="historyCount">0 pesquisas</span>
+      </div>
+      
       <ul id="historyList">
-        <!-- JS inject -->
+        <li class="empty-state">Nenhuma pesquisa ainda</li>
       </ul>
     </aside>
 
@@ -76,10 +172,24 @@
 
   <!-- Footer -->
   <footer class="app-footer">
-    <p>Projeto OSINT • Dados públicos apenas</p>
+    <p>
+      <i class="fas fa-shield-alt"></i> 
+      Projeto OSINT - Apenas dados públicos | 
+      <a href="#privacy" class="footer-link">Privacidade</a> | 
+      <a href="#terms" class="footer-link">Termos de Uso</a>
+    </p>
+    <p class="footer-warning">
+      <i class="fas fa-exclamation-triangle"></i>
+      Use esta ferramenta de forma ética e responsável
+    </p>
   </footer>
 
-  <!-- JS -->
+  <!-- Scripts -->
+  <script src="js/config.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/search.js"></script>
+  <script src="js/ui.js"></script>
   <script src="js/app.js"></script>
+
 </body>
 </html>
