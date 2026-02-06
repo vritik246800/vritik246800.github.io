@@ -5,6 +5,8 @@
 
 class StorageManager {
   constructor() {
+    //definir chave para localStorage (futura migração para DB)
+    //para saver o save vai no browser F12 -> Application -> Local Storage -> vritik-search-history
     this.storageKey = 'vritik-search-history';
     this.dbReady = false; // Flag para futura migração para IndexedDB/Backend
   }
