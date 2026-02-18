@@ -475,25 +475,59 @@
    }
    
    /* ============================================================
-      ABOUT PAGE
+      ABOUT PAGE — MARATHON CINEMATIC STYLE
       ============================================================ */
    
    .about-section {
-       max-width: 860px;
-       margin: 0 auto;
-       padding: 60px 20px;
+       max-width: 100%;
+       margin: 0;
+       padding: 0;
+   }
+
+   /* ===== ABOUT HERO — full viewport ===== */
+   .about-section > .back-link {
+       position: fixed;
+       top: 32px;
+       left: 40px;
+       z-index: 100;
+       margin: 0;
+       font-size: 0.85rem;
+       letter-spacing: 0.25em;
+       padding: 8px 0;
+       border: none;
+       opacity: 0.6;
+       transition: opacity 0.3s ease;
+   }
+
+   .about-section > .back-link:hover {
+       opacity: 1;
+       text-shadow: var(--glow-green);
    }
    
    .about-section h1 {
        font-family: 'Bebas Neue', sans-serif;
-       font-size: clamp(3rem, 8vw, 5rem);
-       letter-spacing: 0.1em;
+       font-size: clamp(4rem, 12vw, 9rem);
+       letter-spacing: 0.04em;
        color: #fff;
-       margin-bottom: 40px;
-       text-shadow: 2px 0 var(--neon-green), -2px 0 var(--neon-magenta);
+       margin: 0;
+       padding: 25vh 5% 0;
+       text-shadow: none;
+       line-height: 0.95;
+       position: relative;
+   }
+
+   /* Neon underline after h1 */
+   .about-section h1::after {
+       content: '';
+       display: block;
+       width: 80px;
+       height: 3px;
+       background: var(--neon-green);
+       box-shadow: 0 0 20px var(--neon-green);
+       margin-top: 30px;
    }
    
-   /* ===== BACK LINK ===== */
+   /* ===== BACK LINK (generic) ===== */
    .back-link {
        display: inline-block;
        font-family: 'Bebas Neue', sans-serif;
@@ -512,17 +546,18 @@
        text-shadow: var(--glow-green);
    }
    
-   /* ===== INTRO CARD ===== */
+   /* ===== INTRO CARD — Marathon pitch block ===== */
    .intro-card {
        display: flex;
        align-items: center;
-       gap: 2rem;
-       background: var(--bg-card);
-       padding: 30px;
-       border: 1px solid var(--border-subtle);
-       margin-bottom: 40px;
+       gap: 3rem;
+       background: var(--bg-deep);
+       padding: 60px 5%;
+       border: none;
+       border-bottom: 1px solid var(--border-subtle);
+       margin-bottom: 0;
        position: relative;
-       clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px));
+       clip-path: none;
    }
    
    .intro-card::before {
@@ -532,14 +567,16 @@
        left: 0;
        right: 0;
        height: 2px;
-       background: linear-gradient(90deg, var(--neon-green), var(--neon-purple), var(--neon-magenta));
+       background: var(--neon-green);
+       box-shadow: 0 0 20px rgba(61, 255, 145, 0.3);
    }
    
    .texto-intro {
        flex: 1;
-       font-size: 15px;
-       line-height: 1.7;
+       font-size: 16px;
+       line-height: 1.8;
        color: var(--text-secondary);
+       max-width: 600px;
    }
    
    .texto-intro strong {
@@ -547,8 +584,8 @@
    }
    
    .profile-pic {
-       width: 160px;
-       height: 160px;
+       width: 180px;
+       height: 180px;
        border-radius: 0;
        object-fit: cover;
        border: 2px solid var(--neon-green);
@@ -556,13 +593,13 @@
        filter: saturate(1.2) contrast(1.1);
        transition: all 0.4s ease;
        animation: glowPulse 4s ease-in-out infinite;
-       clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+       clip-path: none;
    }
    
    .profile-pic:hover {
        transform: scale(1.04);
-       border-color: var(--neon-magenta);
-       box-shadow: var(--glow-magenta);
+       border-color: var(--neon-acid);
+       box-shadow: var(--glow-acid);
        filter: saturate(1.6) contrast(1.2);
    }
    
@@ -581,41 +618,109 @@
        .intro-card {
            flex-direction: column-reverse;
            text-align: center;
+           padding: 40px 20px;
        }
        .texto-intro {
            text-align: center;
        }
+       .about-section > .back-link {
+           top: 20px;
+           left: 20px;
+       }
+       .about-section h1 {
+           padding: 20vh 20px 0;
+       }
    }
    
-   /* ===== CONTENT BLOCKS ===== */
+   /* ===== CONTENT BLOCKS — Marathon full-width sections ===== */
    .content-block {
-       margin: 40px 0 20px;
+       margin: 0;
+       padding: 70px 5%;
+       border-bottom: 1px solid var(--border-subtle);
+   }
+
+   /* Alternating backgrounds for about content blocks */
+   .content-block:nth-of-type(odd) {
+       background: var(--bg-void);
+   }
+
+   .content-block:nth-of-type(even) {
+       background: var(--bg-deep);
    }
    
    .content-block h2,
    .letra-iman {
        font-family: 'Bebas Neue', sans-serif;
-       font-size: clamp(1.6rem, 4vw, 2.2rem);
-       letter-spacing: 0.12em;
+       font-size: clamp(2rem, 5vw, 3.5rem);
+       letter-spacing: 0.06em;
        color: #fff;
        position: relative;
-       display: inline-block;
-       margin-bottom: 16px;
+       display: block;
+       margin-bottom: 12px;
+   }
+
+   /* Green bar before section titles */
+   .content-block h2::before,
+   .letra-iman::before {
+       content: '';
+       display: block;
+       width: 40px;
+       height: 3px;
+       background: var(--neon-green);
+       box-shadow: 0 0 12px var(--neon-green);
+       margin-bottom: 20px;
+   }
+
+   /* Remove the default section h2::after underline inside about */
+   .about-section .content-block h2::after,
+   .about-section .letra-iman::after,
+   .about-section .skills-section .letra-iman::after,
+   .about-section .github-section .letra-iman::after {
+       display: none;
    }
    
    .content-block p {
        color: var(--text-secondary);
-       line-height: 1.8;
-       max-width: 640px;
-       font-size: 14px;
+       line-height: 1.9;
+       max-width: 700px;
+       font-size: 15px;
    }
    
-   /* ===== TIMELINE (TREE) ===== */
+   /* ===== TIMELINE (TREE) — Marathon section ===== */
+   #timeline {
+       padding: 70px 5%;
+       border-bottom: 1px solid var(--border-subtle);
+       background: var(--bg-deep);
+   }
+
+   .project-overview1 {
+       margin-bottom: 20px;
+   }
+
+   .project-overview1 h2 {
+       font-family: 'Bebas Neue', sans-serif;
+       text-align: left;
+       color: #fff;
+       font-size: clamp(2rem, 5vw, 3.5rem);
+       letter-spacing: 0.06em;
+       margin-top: 0;
+   }
+
+   .project-overview1 h2::before {
+       content: '';
+       display: block;
+       width: 40px;
+       height: 3px;
+       background: var(--neon-green);
+       box-shadow: 0 0 12px var(--neon-green);
+       margin-bottom: 20px;
+   }
+
    .tree-container {
        overflow-x: auto;
        padding: 20px 0;
        scrollbar-width: thin;
-       scrollbar-color: var(--neon-purple) var(--bg-void);
+       scrollbar-color: var(--neon-green) var(--bg-void);
    }
    
    .tree {
@@ -628,37 +733,55 @@
    
    .node {
        background: var(--bg-card);
-       padding: 14px 20px;
-       border: 1px solid var(--border-neon);
+       padding: 16px 24px;
+       border: 1px solid rgba(61, 255, 145, 0.2);
        color: var(--text-primary);
        text-align: center;
-       min-width: 200px;
+       min-width: 220px;
        position: relative;
        font-family: 'JetBrains Mono', monospace;
        font-size: 13px;
-       transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-       clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
+       transition: all 0.3s ease;
+       clip-path: none;
+   }
+
+   .node::before {
+       content: '';
+       position: absolute;
+       top: 0;
+       left: 0;
+       right: 0;
+       height: 2px;
+       background: var(--neon-green);
+       transform: scaleX(0);
+       transform-origin: left;
+       transition: transform 0.3s ease;
    }
    
    .node small {
        color: var(--neon-green);
        font-size: 11px;
-       letter-spacing: 0.1em;
+       letter-spacing: 0.15em;
    }
    
    .node:hover {
        transform: translateY(-4px);
        border-color: var(--neon-green);
-       box-shadow: var(--glow-green);
+       box-shadow: 0 0 20px rgba(61, 255, 145, 0.15);
+   }
+
+   .node:hover::before {
+       transform: scaleX(1);
    }
    
    .root {
        margin-bottom: 40px;
        font-family: 'Bebas Neue', sans-serif;
-       font-size: 1.2rem;
+       font-size: 1.3rem;
        letter-spacing: 0.15em;
-       border-color: var(--neon-magenta);
-       color: var(--neon-magenta);
+       border-color: var(--neon-green);
+       color: var(--neon-green);
+       background: var(--bg-surface);
    }
    
    .root::after {
@@ -674,7 +797,7 @@
    
    .branches {
        display: flex;
-       gap: 30px;
+       gap: 40px;
        position: relative;
    }
    
@@ -686,7 +809,7 @@
        right: 0;
        height: 1px;
        background: var(--neon-green);
-       box-shadow: 0 0 8px var(--neon-green);
+       box-shadow: 0 0 6px var(--neon-green);
    }
    
    .branch {
@@ -705,11 +828,12 @@
    }
    
    .year-node {
-       border-color: var(--neon-yellow);
-       color: var(--neon-yellow);
+       border-color: var(--neon-acid);
+       color: var(--neon-acid);
        font-family: 'Bebas Neue', sans-serif;
-       font-size: 1.4rem;
+       font-size: 1.5rem;
        letter-spacing: 0.15em;
+       background: var(--bg-surface);
    }
    
    .sub-branches {
@@ -720,12 +844,12 @@
        margin-top: 12px;
    }
    
-   /* ===== TECH SLIDER ===== */
+   /* ===== TECH SLIDER — Marathon marquee ===== */
    .tech-slider {
        width: 100%;
        overflow: hidden;
-       background: var(--bg-deep);
-       padding: 30px 0;
+       background: var(--bg-void);
+       padding: 40px 0;
        border-top: 1px solid var(--border-subtle);
        border-bottom: 1px solid var(--border-subtle);
        position: relative;
@@ -735,7 +859,7 @@
        content: '';
        position: absolute;
        inset: 0;
-       background: linear-gradient(90deg, var(--bg-deep) 0%, transparent 10%, transparent 90%, var(--bg-deep) 100%);
+       background: linear-gradient(90deg, var(--bg-void) 0%, transparent 10%, transparent 90%, var(--bg-void) 100%);
        pointer-events: none;
        z-index: 1;
    }
@@ -748,8 +872,8 @@
    
    .tech-track img {
        height: clamp(40px, 8vw, 65px);
-       margin: 0 35px;
-       filter: grayscale(100%) brightness(0.6);
+       margin: 0 40px;
+       filter: grayscale(100%) brightness(0.5);
        transition: filter 0.3s ease, transform 0.3s ease;
    }
    
@@ -767,53 +891,79 @@
        to   { transform: translateX(-50%); }
    }
    
-   /* ===== SKILLS GRID ===== */
+   /* ===== SKILLS GRID — Marathon grid blocks ===== */
    .skills-section {
-       margin: 40px 0;
+       margin: 0;
+       padding: 70px 5%;
+       border-bottom: 1px solid var(--border-subtle);
+       background: var(--bg-void);
    }
    
    .skills-grid {
        display: grid;
-       grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-       gap: 16px;
-       margin-top: 20px;
+       grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+       gap: 1px;
+       margin-top: 30px;
+       background: var(--border-subtle);
+       max-width: 1200px;
    }
    
    .skill-item {
        background: var(--bg-card);
-       border: 1px solid var(--border-subtle);
-       padding: 20px;
+       border: none;
+       padding: 28px 24px;
        text-align: center;
        transition: all 0.3s ease;
        position: relative;
-       clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+       clip-path: none;
+   }
+
+   .skill-item::before {
+       content: '';
+       position: absolute;
+       top: 0;
+       left: 0;
+       right: 0;
+       height: 2px;
+       background: var(--neon-green);
+       transform: scaleX(0);
+       transform-origin: left;
+       transition: transform 0.3s ease;
    }
    
    .skill-item:hover {
-       border-color: var(--neon-green);
-       box-shadow: var(--glow-green);
-       transform: translateY(-4px);
+       background: var(--bg-surface);
+       border-color: transparent;
+       box-shadow: none;
+       transform: none;
+   }
+
+   .skill-item:hover::before {
+       transform: scaleX(1);
    }
    
    .skill-item .divs strong {
        font-family: 'Bebas Neue', sans-serif;
-       font-size: 1.1rem;
+       font-size: 1.2rem;
        letter-spacing: 0.1em;
        color: var(--neon-green);
        display: block;
-       margin-bottom: 6px;
+       margin-bottom: 8px;
    }
    
    .skill-item span {
        font-size: 12px;
        color: var(--text-muted);
-       letter-spacing: 0.1em;
+       letter-spacing: 0.12em;
        text-transform: uppercase;
    }
    
-   /* ===== GITHUB / CONTACT ===== */
+   /* ===== GITHUB / CONTACT — Marathon section ===== */
    .github-section {
-       margin: 40px 0;
+       margin: 0;
+       padding: 70px 5%;
+       border-bottom: 1px solid var(--border-subtle);
+       background: var(--bg-deep);
    }
    
    .github-link {
@@ -828,21 +978,22 @@
    }
    
    .github-link:hover {
-       color: var(--neon-magenta);
-       text-shadow: var(--glow-magenta);
+       color: var(--neon-acid);
+       text-shadow: 0 0 15px rgba(170, 255, 0, 0.4);
    }
    
    .escrever {
        color: var(--text-secondary);
-       font-size: 14px;
-       margin-bottom: 16px;
+       font-size: 15px;
+       margin-bottom: 20px;
+       line-height: 1.7;
    }
    
    #contacts {
        display: flex;
        flex-wrap: wrap;
        gap: 12px;
-       margin-top: 16px;
+       margin-top: 20px;
    }
    
    /* ============================================================
@@ -1430,19 +1581,6 @@
    }
    
    /* ============================================================
-      PROJECT OVERVIEW1 (Timeline label)
-      ============================================================ */
-   
-   .project-overview1 h2 {
-       font-family: 'Bebas Neue', sans-serif;
-       text-align: left;
-       color: var(--neon-green);
-       font-size: 1.8rem;
-       letter-spacing: 0.12em;
-       margin-top: 0;
-   }
-   
-   /* ============================================================
       DIVS (icon containers in about)
       ============================================================ */
    
@@ -1486,7 +1624,13 @@
        .features-grid,
        .architecture-block,
        .implementation-details { grid-template-columns: 1fr; }
-       .intro-card { flex-direction: column-reverse; text-align: center; }
+       .intro-card { flex-direction: column-reverse; text-align: center; padding: 40px 20px; }
+       .texto-intro { text-align: center; }
+       #timeline { padding: 50px 20px; }
+       .skills-section { padding: 50px 20px; }
+       .github-section { padding: 50px 20px; }
+       .content-block { padding: 50px 20px; }
+       .skills-grid { grid-template-columns: repeat(2, 1fr); }
        .texto-intro { text-align: center; }
        .hero-buttons { flex-direction: column; align-items: center; }
        #hero-name { padding: 0 1rem; }
@@ -1734,13 +1878,7 @@
    .whatsapp-link:hover { color: #25d366; border-color: #25d366; box-shadow: 0 0 15px rgba(37,211,102,0.2); }
    .instagram-link:hover { color: #e1306c; border-color: #e1306c; box-shadow: 0 0 15px rgba(225,48,108,0.2); }
    
-   /* Container de contactos */
-   #contacts {
-       display: flex;
-       flex-wrap: wrap;
-       gap: 10px;
-       margin-top: 20px;
-   }
+   /* Container de contactos — already defined above */
    
    /* ============================================================
       HERO GRID & SECTION OVERRIDE para index
@@ -1755,77 +1893,12 @@
    }
    
    /* ============================================================
-      PROFILE PIC — quadrado com borda verde Marathon
+      PROFILE PIC — Marathon green border
       ============================================================ */
-   
-   .profile-pic {
-       width: 160px;
-       height: 160px;
-       border-radius: 0;
-       object-fit: cover;
-       border: 2px solid var(--neon-green);
-       box-shadow: var(--glow-green);
-       filter: saturate(1.2) contrast(1.1);
-       transition: all 0.4s ease;
-       animation: glowPulse 4s ease-in-out infinite;
-       clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
-   }
-   
-   .profile-pic:hover {
-       transform: scale(1.04);
-       border-color: var(--neon-acid);
-       box-shadow: var(--glow-acid);
-       filter: saturate(1.6) contrast(1.2);
-   }
-   
-   @keyframes glowPulse {
-       0%   { box-shadow: 0 0 10px rgba(61, 255, 145, 0.2); }
-       50%  { box-shadow: 0 0 30px rgba(61, 255, 145, 0.6), 0 0 60px rgba(61, 255, 145, 0.2); }
-       100% { box-shadow: 0 0 10px rgba(61, 255, 145, 0.2); }
-   }
    
    /* ============================================================
-      NODE TREE — verde Marathon
+      NODE TREE & SKILLS — unified Marathon green
       ============================================================ */
-   
-   .node {
-       border-color: rgba(61, 255, 145, 0.4);
-   }
-   
-   .node:hover {
-       border-color: var(--neon-green);
-       box-shadow: var(--glow-green);
-   }
-   
-   .root {
-       border-color: var(--neon-magenta);
-       color: var(--neon-magenta);
-   }
-   
-   .year-node {
-       border-color: var(--neon-acid);
-       color: var(--neon-acid);
-   }
-   
-   .root::after,
-   .branches::before,
-   .branch::before {
-       background: var(--neon-green);
-       box-shadow: 0 0 6px var(--neon-green);
-   }
-   
-   /* ============================================================
-      SKILL ITEMS — verde
-      ============================================================ */
-   
-   .skill-item:hover {
-       border-color: var(--neon-green);
-       box-shadow: var(--glow-green);
-   }
-   
-   .skill-item .divs strong {
-       color: var(--neon-green);
-   }
    
    /* ============================================================
       TECH TRACK hover
@@ -1885,11 +1958,11 @@
    }
    
    /* ============================================================
-      ABOUT PAGE — h1 e node green
+      ABOUT PAGE — Marathon clean h1
       ============================================================ */
    
    .about-section h1 {
-       text-shadow: 2px 0 var(--neon-green), -2px 0 var(--neon-magenta);
+       text-shadow: none;
    }
    
    /* Project hero — Marathon clean */
