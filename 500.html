@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>500 — Erro do Servidor</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/picture/favicon.png">
+  <style>
+    /* ===== ERROR 500 — SYSTEM CRASH CYBERPUNK ===== */
+    .error-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Grid background */
+    .error-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255, 45, 107, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 45, 107, 0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
+
+    /* Bottom neon line — red/orange danger */
+    .error-section::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--neon-orange), var(--neon-magenta), var(--neon-orange), transparent);
+    }
+
+    /* Error code — massive with distortion */
+    .error-code {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(8rem, 25vw, 16rem);
+      color: #ffffff;
+      line-height: 0.9;
+      letter-spacing: 0.05em;
+      position: relative;
+      text-shadow:
+        4px 0 var(--neon-orange),
+        -4px 0 var(--neon-magenta),
+        0 0 60px rgba(255, 102, 0, 0.4),
+        0 0 120px rgba(255, 45, 107, 0.15);
+      filter: drop-shadow(0 0 40px rgba(255, 102, 0, 0.3));
+      animation: fadeUp 0.6s ease both, error-shake 4s ease-in-out infinite;
+    }
+
+    /* Continuous subtle shake */
+    @keyframes error-shake {
+      0%, 100% { transform: translate(0, 0); }
+      10% { transform: translate(-2px, 1px); }
+      20% { transform: translate(1px, -1px); }
+      30% { transform: translate(0, 0); }
+    }
+
+    /* Glitch layers */
+    .error-code::before,
+    .error-code::after {
+      content: '500';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      overflow: hidden;
+    }
+
+    .error-code::before {
+      color: var(--neon-orange);
+      z-index: -1;
+      animation: glitch-top 2s infinite linear alternate-reverse;
+    }
+
+    .error-code::after {
+      color: var(--neon-magenta);
+      z-index: -2;
+      animation: glitch-bottom 2.8s infinite linear alternate-reverse;
+    }
+
+    @keyframes glitch-top {
+      0%   { clip-path: inset(0 0 85% 0); transform: translate(-4px, -2px); }
+      15%  { clip-path: inset(20% 0 60% 0); transform: translate(5px, 1px); }
+      30%  { clip-path: inset(70% 0 10% 0); transform: translate(-3px, 0); }
+      50%  { clip-path: inset(5% 0 80% 0); transform: translate(4px, -2px); }
+      70%  { clip-path: inset(45% 0 35% 0); transform: translate(-5px, 2px); }
+      100% { clip-path: inset(0 0 85% 0); transform: translate(0, 0); }
+    }
+
+    @keyframes glitch-bottom {
+      0%   { clip-path: inset(75% 0 0 0); transform: translate(4px, 3px); }
+      20%  { clip-path: inset(50% 0 20% 0); transform: translate(-3px, -2px); }
+      45%  { clip-path: inset(85% 0 5% 0); transform: translate(5px, 0); }
+      65%  { clip-path: inset(15% 0 70% 0); transform: translate(-4px, 2px); }
+      100% { clip-path: inset(75% 0 0 0); transform: translate(0, 0); }
+    }
+
+    /* Error subtitle */
+    .error-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: clamp(0.7rem, 2vw, 0.9rem);
+      color: var(--neon-orange);
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      margin-top: 8px;
+      opacity: 0.9;
+      animation: fadeUp 0.8s ease both;
+    }
+
+    .error-label::after {
+      content: '█';
+      animation: blink 0.6s step-end infinite;
+      color: var(--neon-magenta);
+      margin-left: 4px;
+    }
+
+    /* Error message */
+    .error-message {
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin: 1.5rem 0 2rem;
+      max-width: 480px;
+      line-height: 1.7;
+      animation: fadeUp 1s ease both;
+    }
+
+    /* Error badge — danger orange */
+    .error-badge {
+      display: inline-block;
+      margin: 0 0 2rem;
+      padding: 8px 24px;
+      background: transparent;
+      color: var(--neon-orange);
+      border: 1px solid var(--neon-orange);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1rem;
+      letter-spacing: 0.3em;
+      animation: fadeUp 1.2s ease both, badge-pulse 2s ease-in-out infinite;
+      box-shadow: 0 0 20px rgba(255, 102, 0, 0.2);
+      clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+    }
+
+    @keyframes badge-pulse {
+      0%, 100% { box-shadow: 0 0 20px rgba(255, 102, 0, 0.2); }
+      50% { box-shadow: 0 0 30px rgba(255, 102, 0, 0.4), 0 0 60px rgba(255, 102, 0, 0.1); }
+    }
+
+    /* Terminal crash log */
+    .error-terminal {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--text-muted);
+      letter-spacing: 0.03em;
+      margin-bottom: 2rem;
+      animation: fadeUp 1.4s ease both;
+      line-height: 2;
+      text-align: left;
+      max-width: 420px;
+      background: rgba(10, 10, 10, 0.6);
+      border: 1px solid rgba(255, 102, 0, 0.15);
+      padding: 16px 20px;
+    }
+
+    .error-terminal .prompt {
+      color: var(--neon-orange);
+      opacity: 0.6;
+    }
+
+    .error-terminal .err {
+      color: var(--neon-magenta);
+    }
+
+    .error-terminal .ok {
+      color: var(--neon-green);
+      opacity: 0.5;
+    }
+
+    /* Back button */
+    .error-section .back-button {
+      animation: fadeUp 1.6s ease both;
+    }
+
+    .error-section .back-button:hover {
+      background: var(--neon-green);
+      color: var(--bg-void);
+      box-shadow: var(--glow-green);
+    }
+
+    /* Retry button — secondary */
+    .retry-button {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1rem;
+      letter-spacing: 0.2em;
+      display: inline-block;
+      padding: 14px 32px;
+      background: transparent;
+      color: var(--neon-orange);
+      border: 1px solid var(--neon-orange);
+      text-decoration: none;
+      text-transform: uppercase;
+      clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+      transition: all 0.25s ease;
+      cursor: pointer;
+      animation: fadeUp 1.6s ease both;
+    }
+
+    .retry-button:hover {
+      background: var(--neon-orange);
+      color: var(--bg-void);
+      box-shadow: 0 0 20px rgba(255, 102, 0, 0.5), 0 0 60px rgba(255, 102, 0, 0.15);
+    }
+
+    .error-buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    /* Floating particles — red/orange */
+    .error-particle {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: var(--neon-orange);
+      border-radius: 50%;
+      opacity: 0;
+      animation: float-particle linear infinite;
+    }
+
+    .error-particle:nth-child(1) { left: 8%; animation-duration: 7s; animation-delay: 0s; }
+    .error-particle:nth-child(2) { left: 22%; animation-duration: 11s; animation-delay: 1.5s; background: var(--neon-magenta); }
+    .error-particle:nth-child(3) { left: 45%; animation-duration: 9s; animation-delay: 3s; }
+    .error-particle:nth-child(4) { left: 65%; animation-duration: 10s; animation-delay: 0.5s; background: var(--neon-magenta); }
+    .error-particle:nth-child(5) { left: 80%; animation-duration: 8s; animation-delay: 2s; }
+    .error-particle:nth-child(6) { left: 35%; animation-duration: 12s; animation-delay: 4s; }
+
+    @keyframes float-particle {
+      0%   { transform: translateY(100vh); opacity: 0; }
+      10%  { opacity: 0.5; }
+      90%  { opacity: 0.5; }
+      100% { transform: translateY(-20vh); opacity: 0; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <section class="error-section">
+    <!-- Floating particles -->
+    <div class="error-particle"></div>
+    <div class="error-particle"></div>
+    <div class="error-particle"></div>
+    <div class="error-particle"></div>
+    <div class="error-particle"></div>
+    <div class="error-particle"></div>
+
+    <div class="error-code">500</div>
+
+    <p class="error-label">internal_server_error</p>
+
+    <p class="error-message">
+      O sistema encontrou uma falha crítica. O servidor não conseguiu processar o teu pedido. Tenta novamente dentro de momentos.
+    </p>
+
+    <span class="error-badge">SYSTEM CRASH</span>
+
+    <div class="error-terminal">
+      <span class="prompt">&gt;</span> status: <span class="err">500 INTERNAL SERVER ERROR</span><br>
+      <span class="prompt">&gt;</span> process: <span class="err">TERMINATED</span><br>
+      <span class="prompt">&gt;</span> uptime: 0ms<br>
+      <span class="prompt">&gt;</span> timestamp: <span id="error-time"></span><br>
+      <span class="prompt">&gt;</span> retry: <span class="ok">AVAILABLE</span>
+    </div>
+
+    <div class="error-buttons">
+      <button class="retry-button" onclick="location.reload()">↻ Tentar Novamente</button>
+      <a href="index.html" class="back-button">← Voltar à Base</a>
+    </div>
+  </section>
+
+  <script>
+    document.getElementById('error-time').textContent = new Date().toISOString().replace('T', ' ').split('.')[0] + ' UTC';
+  </script>
+</body>
+
+</html>
