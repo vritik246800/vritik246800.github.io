@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 — Página Não Encontrada</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/error.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/picture/favicon.png">
+</head>
+
+<body class="error-404">
+
+  <section class="error-section">
+    <div class="error-particle"></div>
+    <div class="error-particle"></div>
+    <div class="error-particle"></div>
+    <div class="error-particle"></div>
+    <div class="error-particle"></div>
+    <div class="error-particle"></div>
+
+    <div class="error-code">404</div>
+
+    <p class="error-label">page_not_found</p>
+
+    <p class="error-message">
+      O destino que procuras não existe neste sistema. O link pode estar corrompido, a rota foi eliminada, ou nunca existiu.
+    </p>
+
+    <span class="error-badge">SIGNAL LOST</span>
+
+    <div class="error-diagnostics">
+      <span>&gt;</span> status: 404 NOT FOUND<br>
+      <span>&gt;</span> route: <span id="error-path"></span><br>
+      <span>&gt;</span> timestamp: <span id="error-time"></span>
+    </div>
+
+    <a href="index.html" class="back-button">← Voltar à Base</a>
+  </section>
+
+  <script src="js/date_time.js"></script>
+</body>
+
+</html>
