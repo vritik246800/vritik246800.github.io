@@ -2,20 +2,88 @@
 <html lang="pt">
 <head>
   <meta charset="UTF-8" />
-  <title>Átomo Elétrico 3D</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ÁTOMO ELÉTRICO — 3D</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
-  <link rel="icon" type="image/png" sizes="32x32" href="/assets/picture/favicon.png">
 </head>
 <body>
 
-  <header>
-    <h1>Átomo Elétrico 3D</h1>
-    <p>HTML + CSS + JS + THREEJS (sem NodeJS e sem Vue)</p>
-  </header>
+  <!-- LOADER -->
+  <div class="loader" id="loader">
+    <div class="loader-text">Initializing</div>
+    <div class="loader-bar"><div class="loader-bar-fill"></div></div>
+  </div>
 
+  <!-- OVERLAYS -->
+  <div class="scanlines"></div>
+  <div class="vignette"></div>
+  <div class="noise"></div>
+  <div class="cursor-glow" id="cursorGlow"></div>
+
+  <!-- CORNER BRACKETS -->
+  <div class="corner tl"></div>
+  <div class="corner tr"></div>
+  <div class="corner bl"></div>
+  <div class="corner br"></div>
+
+  <!-- NAV -->
+  <nav class="nav-bar">
+    <a href="#" class="nav-logo">PORTFOLIO</a>
+    <ul class="nav-links">
+      <li><a href="#">Projetos</a></li>
+      <li><a href="#">Sobre</a></li>
+      <li><a href="#">Contacto</a></li>
+    </ul>
+  </nav>
+
+  <!-- SIDE MARKERS -->
+  <div class="side-marker left">Graphic Realism — 2026</div>
+  <div class="side-marker right">Three.js Experiment</div>
+
+  <!-- HUD -->
+  <div class="hud" id="hud">
+    <div class="hud-item">
+      <div class="hud-label">Eletrões</div>
+      <div class="hud-value" id="hudElectrons">25</div>
+    </div>
+    <div class="hud-item">
+      <div class="hud-label">Órbitas</div>
+      <div class="hud-value" id="hudOrbits">25</div>
+    </div>
+    <div class="hud-item">
+      <div class="hud-label">FPS</div>
+      <div class="hud-value" id="hudFps">60</div>
+    </div>
+    <div class="hud-item">
+      <div class="hud-label">Tempo</div>
+      <div class="hud-value" id="hudTime">00:00</div>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-tag">Experiência Interativa</div>
+      <h1 class="hero-title">
+        <span class="glitch" data-text="ÁTOMO">ÁTOMO</span><br>
+        <span class="accent">ELÉTRICO</span>
+      </h1>
+      <p class="hero-sub">Visualização 3D em tempo real</p>
+      <div class="hero-line"></div>
+      <p class="hero-desc">HTML + CSS + Three.js — Sem frameworks, sem node. Código puro e render WebGL.</p>
+    </div>
+  </div>
+
+  <!-- PROGRESS -->
+  <div class="progress-bar"><div class="fill"></div></div>
+
+  <!-- CANVAS -->
   <canvas id="scene"></canvas>
 
-  <!-- Three.js via CDN -->
+  <!-- Three.js CDN -->
   <script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
   <script src="app.js"></script>
 </body>
