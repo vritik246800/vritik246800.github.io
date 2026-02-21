@@ -1988,4 +1988,25 @@
        color: var(--neon-acid);
    }
 
- 
+   /* ===== CARD TAG — badge sobre a imagem ===== */
+.card-tag {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    z-index: 3;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--bg-void);
+    background: var(--neon-green);
+    padding: 3px 10px 2px;
+    line-height: 1.4;
+    clip-path: polygon(4px 0%, 100% 0%, calc(100% - 4px) 100%, 0% 100%);
+    pointer-events: none;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.project-card:hover .card-tag {
+    background: var(--neon-acid);
+}
