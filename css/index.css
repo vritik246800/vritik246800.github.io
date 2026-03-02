@@ -1,0 +1,307 @@
+/* ============================================================
+   INDEX TILES — css/index-tiles.css
+   
+   COMO USAR:
+   Adiciona no index.html depois do style.css:
+   <link rel="stylesheet" href="css/index-tiles.css">
+
+   CLASSES DE TAMANHO — adiciona ao div.project-card:
+   
+   (sem classe)           → 4 colunas  — card normal (3 por linha)
+   class="tile--wide"     → 6 colunas  — card largo  (2 por linha)
+   class="tile--big"      → 8 colunas  — card grande (destaque)
+   class="tile--full"     → 12 colunas — card full width
+   class="tile--small"    → 3 colunas  — card pequeno (4 por linha)
+
+   EXEMPLO DE USO NO HTML:
+   
+   <div class="project-card tile--wide">   ← largo
+   <div class="project-card tile--big">    ← grande (destaque)
+   <div class="project-card">              ← normal
+   <div class="project-card tile--small">  ← pequeno
+
+   REGRAS DO DENSE:
+   O grid-auto-flow: dense preenche buracos automaticamente.
+   Se um tile largo não couber, o dense encaixa um pequeno no espaço.
+   Não precisas de te preocupar com buracos — o CSS trata disso.
+   ============================================================ */
+
+
+/* ── Divisor entre secções ── */
+.section-divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg,
+        transparent,
+        var(--neon-green) 20%,
+        var(--neon-cyan) 50%,
+        var(--neon-green) 80%,
+        transparent
+    );
+    opacity: 0.25;
+    margin: 0;
+}
+
+/* ── "09 projetos" ao lado do título ── */
+.section-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    letter-spacing: 0.15em;
+    margin-bottom: 8px;
+    white-space: nowrap;
+    text-transform: uppercase;
+}
+
+
+/* ============================================================
+   GRID
+   ============================================================ */
+
+.projects-wrapper {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 0 2px 0;
+    border-left: 1px solid var(--border-subtle);
+    border-right: 1px solid var(--border-subtle);
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-auto-flow: row dense;   /* preenche buracos automaticamente */
+    gap: 1px;
+    background: var(--border-subtle);
+}
+
+
+/* ============================================================
+   PROJECT CARD — BASE
+   ============================================================ */
+
+.project-card {
+    background: var(--bg-card);
+    position: relative;
+    overflow: hidden;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    clip-path: none;
+    border: none;
+
+    /* PADRÃO: 4 colunas — 3 cards por linha */
+    grid-column: span 4;
+}
+
+/* Neon bar topo */
+.project-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--neon-green);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.35s ease;
+    z-index: 4;
+}
+
+.project-card::after { display: none; }
+
+.project-card:hover {
+    background: var(--bg-surface);
+    box-shadow: inset 0 0 40px rgba(61, 255, 145, 0.05);
+    transform: none;
+}
+
+.project-card:hover::before { transform: scaleX(1); }
+
+/* Imagem */
+.project-card img {
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    border-bottom: 1px solid rgba(61, 255, 145, 0.08);
+    filter: saturate(0.85) contrast(1.05) brightness(0.8);
+    transition: filter 0.4s ease;
+    display: block;
+}
+
+.project-card:hover img {
+    filter: saturate(1.5) contrast(1.1) brightness(1.0);
+}
+
+/* Card tag */
+.card-tag {
+    position: absolute;
+    top: 12px; left: 12px;
+    z-index: 3;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--bg-void);
+    background: var(--neon-green);
+    padding: 3px 10px 2px;
+    line-height: 1.4;
+    clip-path: polygon(4px 0%, 100% 0%, calc(100% - 4px) 100%, 0% 100%);
+    pointer-events: none;
+    transition: background 0.3s ease;
+}
+
+.project-card:hover .card-tag { background: var(--neon-acid); }
+
+/* Texto */
+.project-card h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.3rem;
+    letter-spacing: 0.06em;
+    color: #fff;
+    padding: 20px 20px 6px;
+    margin: 0;
+    line-height: 1.2;
+}
+
+.project-card p {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    padding: 0 20px 8px;
+    margin: 0;
+    flex: 1;
+}
+
+.project-card span {
+    display: block;
+    font-size: 10px;
+    color: var(--neon-green);
+    opacity: 0.55;
+    letter-spacing: 0.12em;
+    padding: 0 20px 8px;
+    text-transform: uppercase;
+}
+
+.project-card a:last-child {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.2em;
+    color: var(--neon-green);
+    padding: 4px 20px 20px;
+    text-transform: uppercase;
+    transition: color 0.2s ease, gap 0.2s ease;
+    text-decoration: none;
+}
+
+.project-card a:last-child::after {
+    content: '→';
+    transition: transform 0.2s ease;
+}
+
+.project-card:hover a:last-child { color: var(--neon-acid); gap: 10px; }
+.project-card:hover a:last-child::after { transform: translateX(4px); }
+
+
+/* ============================================================
+   CLASSES DE TAMANHO MANUAL
+
+   USO:
+   <div class="project-card">              ← normal  (4 colunas)
+   <div class="project-card tile--wide">   ← largo   (6 colunas)
+   <div class="project-card tile--big">    ← grande  (8 colunas)
+   <div class="project-card tile--full">   ← full    (12 colunas)
+   <div class="project-card tile--small">  ← pequeno (3 colunas)
+   ============================================================ */
+
+/* 6 colunas — 2 por linha */
+.project-card.tile--wide  { grid-column: span 6; }
+
+/* 8 colunas — destaque principal, ocupa 2/3 do grid */
+.project-card.tile--big   { grid-column: span 8; }
+
+/* 12 colunas — full width, sozinho na linha */
+.project-card.tile--full  { grid-column: span 12; }
+
+/* 3 colunas — 4 por linha, cards secundários */
+.project-card.tile--small { grid-column: span 3; }
+
+/* Cards wide e big têm h3 maior */
+.project-card.tile--wide h3,
+.project-card.tile--big h3,
+.project-card.tile--full h3 {
+    font-size: 1.6rem;
+}
+
+/* Card big tem imagem com mais altura */
+.project-card.tile--big img,
+.project-card.tile--full img {
+    aspect-ratio: 21/9;
+}
+
+
+/* ============================================================
+   RESPONSIVE
+   Os spans reduzem proporcionalmente.
+   O dense continua a gerir os buracos em cada breakpoint.
+   ============================================================ */
+
+/* 900–1199px — 8 colunas */
+@media (max-width: 1199px) and (min-width: 900px) {
+    .projects-grid {
+        grid-template-columns: repeat(8, 1fr);
+    }
+
+    /*
+     tile--big  (era 8) → 6
+     tile--wide (era 6) → 4
+     normal     (era 4) → 4
+     tile--small(era 3) → 2
+     tile--full (era 12)→ 8
+    */
+    .project-card              { grid-column: span 4; }
+    .project-card.tile--wide   { grid-column: span 4; }
+    .project-card.tile--big    { grid-column: span 6; }
+    .project-card.tile--full   { grid-column: span 8; }
+    .project-card.tile--small  { grid-column: span 2; }
+}
+
+/* 600–899px — 4 colunas */
+@media (max-width: 899px) and (min-width: 600px) {
+    .projects-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    /*
+     big e wide ficam a 4 (full width)
+     normal fica a 2
+     small fica a 2
+     full fica a 4
+    */
+    .project-card              { grid-column: span 2; }
+    .project-card.tile--wide   { grid-column: span 4; }
+    .project-card.tile--big    { grid-column: span 4; }
+    .project-card.tile--full   { grid-column: span 4; }
+    .project-card.tile--small  { grid-column: span 2; }
+}
+
+/* < 600px — 2 colunas */
+@media (max-width: 599px) {
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Tudo span 2 (full width) exceto small que fica a 1 */
+    .project-card,
+    .project-card.tile--wide,
+    .project-card.tile--big,
+    .project-card.tile--full   { grid-column: span 2; }
+    .project-card.tile--small  { grid-column: span 1; }
+
+    .projects-wrapper {
+        border-left: none;
+        border-right: none;
+    }
+}
