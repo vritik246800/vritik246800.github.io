@@ -1,0 +1,420 @@
+/* ── Hero ocupa viewport completo como project-hero ── */
+.about-hero {
+    position: relative;
+    padding: 60px 5% 80px;
+    background: var(--bg-deep);
+    overflow: hidden;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+.about-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(61, 255, 145, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(61, 255, 145, 0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+}
+.about-hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--neon-green), var(--neon-cyan), var(--neon-green), transparent);
+}
+.about-hero .back-link {
+    position: absolute;
+    top: 40px; left: 5%;
+    z-index: 2;
+}
+.about-hero h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(4rem, 12vw, 9rem);
+    letter-spacing: 0.04em;
+    color: #fff;
+    margin: 0;
+    text-shadow: none;
+    line-height: 0.95;
+    position: relative;
+    z-index: 2;
+}
+.about-hero h1::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 3px;
+    background: var(--neon-green);
+    box-shadow: 0 0 20px var(--neon-green);
+    margin-top: 30px;
+}
+
+/* ── Intro card expandido ── */
+.intro-card {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 4rem;
+    padding: 80px 5%;
+    background: var(--bg-deep);
+    border-bottom: 1px solid var(--border-subtle);
+    position: relative;
+}
+.intro-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--neon-green);
+    box-shadow: 0 0 20px rgba(61,255,145,0.3);
+}
+.texto-intro p {
+    font-size: 16px;
+    line-height: 1.9;
+    color: var(--text-secondary);
+    margin-bottom: 18px;
+    max-width: 680px;
+}
+.texto-intro p:last-child { margin-bottom: 0; }
+.texto-intro strong { color: var(--neon-green); }
+.texto-intro .acid { color: var(--neon-acid); }
+
+.profile-pic {
+    width: 260px;
+    height: 260px;
+    border-radius: 0;
+    object-fit: cover;
+    border: 2px solid var(--neon-green);
+    box-shadow: var(--glow-green);
+    filter: saturate(1.2) contrast(1.1);
+    transition: all 0.4s ease;
+    animation: glowPulse 4s ease-in-out infinite;
+    display: block;
+}
+.profile-pic:hover {
+    transform: scale(1.04);
+    border-color: var(--neon-acid);
+    box-shadow: var(--glow-acid);
+    filter: saturate(1.6) contrast(1.2);
+}
+
+@media (max-width: 768px) {
+    .intro-card {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        text-align: center;
+        padding: 50px 20px;
+        gap: 2rem;
+    }
+    .profile-pic { width: 180px; height: 180px; }
+    .about-hero { min-height: 60vh; padding: 80px 20px 60px; }
+}
+
+/* ============================================================
+   INTERESTS — Dynamic Tile Grid (Bento-style)
+   Tiles expandem automaticamente para preencher espaço vazio.
+   CSS Grid com grid-auto-flow: dense + span dinâmico.
+   ============================================================ */
+
+   .interests-section {
+    margin: 0;
+    padding: 70px 5%;
+    border-bottom: 1px solid var(--border-subtle);
+    background: var(--bg-deep);
+}
+
+/* ===== TILE GRID ===== */
+.tile-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-auto-rows: 140px;
+    grid-auto-flow: row dense;
+    gap: 2px;
+    margin-top: 40px;
+    background: var(--border-subtle);
+}
+
+/* ===== TILE BASE ===== */
+.tile {
+    background: var(--bg-card);
+    border: none;
+    position: relative;
+    overflow: hidden;
+    cursor: default;
+    transition:
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+
+    grid-column: span 2;
+    grid-row: span 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 20px;
+}
+
+/* Top neon bar — aparece no hover */
+.tile::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--neon-green);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.35s ease;
+    z-index: 3;
+}
+
+.tile:hover::before {
+    transform: scaleX(1);
+}
+
+.tile:hover {
+    background: var(--bg-surface);
+    box-shadow: inset 0 0 40px rgba(61, 255, 145, 0.06);
+    z-index: 2;
+}
+
+/* ===== TILE ICON ===== */
+.tile-icon {
+    font-size: 2rem;
+    line-height: 1;
+    margin-bottom: 10px;
+    position: relative;
+    z-index: 2;
+    transition: transform 0.3s ease;
+    filter: drop-shadow(0 0 8px currentColor);
+}
+
+.tile:hover .tile-icon {
+    transform: scale(1.15) translateY(-2px);
+}
+
+/* ===== TILE LABEL ===== */
+.tile-label {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1rem;
+    letter-spacing: 0.12em;
+    color: #fff;
+    position: relative;
+    z-index: 2;
+    line-height: 1.2;
+    transition: color 0.2s ease;
+}
+
+.tile:hover .tile-label {
+    color: var(--neon-green);
+}
+
+/* ===== TILE TAG (subtítulo) ===== */
+.tile-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    position: relative;
+    z-index: 2;
+    margin-top: 4px;
+    transition: color 0.2s ease;
+}
+
+.tile:hover .tile-tag {
+    color: var(--neon-green);
+    opacity: 0.6;
+}
+
+/* ===== CORNER ACCENT ===== */
+.tile-accent {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 36px;
+    height: 36px;
+    border-top: 1px solid var(--border-subtle);
+    border-left: 1px solid var(--border-subtle);
+    opacity: 0;
+    transition: opacity 0.3s ease, width 0.3s ease, height 0.3s ease;
+    z-index: 2;
+}
+
+.tile:hover .tile-accent {
+    opacity: 1;
+    width: 55px;
+    height: 55px;
+}
+
+/* ============================================================
+   VARIANTES DE TAMANHO
+   dense packing preenche automaticamente buracos.
+   ============================================================ */
+
+/* Tile WIDE — 3 colunas */
+.tile--wide {
+    grid-column: span 3;
+}
+
+/* Tile TALL — 1 col × 2 rows */
+.tile--tall {
+    grid-column: span 2;
+    grid-row: span 2;
+    justify-content: flex-start;
+    padding-top: 24px;
+}
+
+/* Tile BIG — 3×2 (destaque) */
+.tile--big {
+    grid-column: span 3;
+    grid-row: span 2;
+    justify-content: flex-start;
+    padding: 28px;
+}
+
+.tile--big .tile-icon {
+    font-size: 3rem;
+    margin-bottom: 16px;
+}
+
+.tile--big .tile-label {
+    font-size: 1.4rem;
+}
+
+.tile--big .tile-desc {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-top: 8px;
+    position: relative;
+    z-index: 2;
+    max-width: 280px;
+}
+
+/* Tile SMALL — 1 coluna */
+.tile--small {
+    grid-column: span 1;
+    padding: 14px;
+}
+
+.tile--small .tile-icon {
+    font-size: 1.4rem;
+    margin-bottom: 6px;
+}
+
+.tile--small .tile-label {
+    font-size: 0.8rem;
+}
+
+/* ============================================================
+   COR POR TEMA
+   ============================================================ */
+.tile--cyber .tile-icon  { color: var(--neon-cyan); }
+.tile--cyber:hover::before { background: var(--neon-cyan); }
+.tile--cyber:hover .tile-label { color: var(--neon-cyan); }
+
+.tile--music .tile-icon  { color: var(--neon-magenta); }
+.tile--music:hover::before { background: var(--neon-magenta); }
+.tile--music:hover .tile-label { color: var(--neon-magenta); }
+
+.tile--code .tile-icon   { color: var(--neon-green); }
+.tile--code:hover::before { background: var(--neon-green); }
+
+.tile--art .tile-icon    { color: var(--neon-acid); }
+.tile--art:hover::before { background: var(--neon-acid); }
+.tile--art:hover .tile-label { color: var(--neon-acid); }
+
+.tile--games .tile-icon  { color: var(--neon-orange); }
+.tile--games:hover::before { background: var(--neon-orange); }
+.tile--games:hover .tile-label { color: var(--neon-orange); }
+
+.tile--motion .tile-icon { color: var(--neon-purple); }
+.tile--motion:hover::before { background: var(--neon-purple); }
+.tile--motion:hover .tile-label { color: var(--neon-purple); }
+
+/* ============================================================
+   RESPONSIVE — transições de breakpoint
+   O grid-template-columns muda e o dense recalcula tudo.
+   ============================================================ */
+
+/* >= 1400px — 6 colunas (default, já definido acima) */
+@media (min-width: 1400px) {
+    .tile-grid {
+        grid-auto-rows: 160px;
+    }
+}
+
+/* 900–1399px — 4 colunas */
+@media (max-width: 1399px) and (min-width: 900px) {
+    .tile-grid {
+        grid-template-columns: repeat(4, 1fr);
+        grid-auto-rows: 150px;
+    }
+    .tile--wide {
+        grid-column: span 2;
+    }
+    .tile--big {
+        grid-column: span 2;
+        grid-row: span 2;
+    }
+}
+
+/* 600–899px — 2 colunas */
+@media (max-width: 899px) and (min-width: 600px) {
+    .tile-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 140px;
+    }
+    .tile {
+        grid-column: span 1;
+    }
+    .tile--wide,
+    .tile--tall,
+    .tile--big {
+        grid-column: span 2;
+    }
+    .tile--tall {
+        grid-row: span 2;
+    }
+    .tile--big {
+        grid-row: span 2;
+    }
+}
+
+/* < 600px — 2 colunas pequenas */
+@media (max-width: 599px) {
+    .interests-section {
+        padding: 50px 20px;
+    }
+    .tile-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 120px;
+        gap: 2px;
+    }
+    .tile {
+        grid-column: span 1;
+        padding: 12px;
+    }
+    .tile--big {
+        grid-column: span 2;
+        grid-row: span 2;
+    }
+    .tile--wide {
+        grid-column: span 2;
+    }
+    .tile--tall {
+        grid-column: span 1;
+        grid-row: span 2;
+    }
+    .tile-icon {
+        font-size: 1.5rem;
+    }
+    .tile-label {
+        font-size: 0.85rem;
+    }
+}

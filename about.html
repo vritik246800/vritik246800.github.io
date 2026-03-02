@@ -4,34 +4,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Sobre mim - Vritik Valabdás</title>
-
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/about.css">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/picture/favicon.png">
+
 </head>
 
 <body>
 
-
-
-
     <section class="about-section">
-        <a href="index.html" class="back-link">← Voltar</a>
 
-        <h1>Sobre mim</h1>
-
-        <div class="intro-card ">
-            <p class="texto-intro">
-                Desenvolvedor <strong>Java</strong> focado em <strong>sistemas desktop</strong>,
-                <strong>redes locais</strong> e <strong>estruturas de dados</strong>.
-            </p>
-            <div class="cards">
-                <img src="assets/picture/Porfile Pic.JPG" alt="Vritik Valabdás" class="profile-pic"
-                    onerror="this.style.display='none'">
-            </div>
+        <!-- HERO — viewport completo com scroll para ver o resto -->
+        <div class="about-hero">
+            <a href="index.html" class="back-link">← Voltar</a>
+            <h1>Sobre mim</h1>
         </div>
 
+        <!-- INTRO COM IMAGEM MAIOR E TEXTO EXPANDIDO -->
+        <div class="intro-card">
+            <div class="texto-intro">
+                <p>
+                    Desenvolvedor focado em <strong>Java</strong>, <strong>Swift</strong> e <strong>Web</strong> —
+                    com experiência em <strong>sistemas desktop</strong>, <strong>redes locais</strong>
+                    e <strong>estruturas de dados</strong>.
+                </p>
+                <p>
+                    No lado nativo construo aplicações <strong>macOS com SwiftUI</strong>,
+                    explorando <strong>CoreData</strong>, padrões <strong>MVVM</strong> e interfaces glass.
+                    No backend e sistemas académicos uso <strong>Java</strong> com
+                    <strong>POO</strong>, algoritmos e comunicação via Sockets TCP/UDP.
+                </p>
+                <p>
+                    Na web domino <strong>HTML</strong>, <strong>CSS</strong> e <strong>JavaScript</strong>
+                    — desde layout responsivo a animações e interações dinâmicas.
+                    Trabalho ainda com <strong>SQL</strong> para gestão de bases de dados relacionais.
+                </p>
+                <p>
+                    Valorizo <span class="acid">código limpo, estruturado e funcional</span>
+                    — e a curiosidade de perceber como os sistemas funcionam por dentro.
+                </p>
+            </div>
+            <img src="assets/picture/Porfile Pic.JPG" alt="Vritik Valabdás" class="profile-pic"
+                onerror="this.style.display='none'">
+        </div>
+
+        <!-- TIMELINE -->
         <section id="timeline">
             <section class="project-overview1">
                 <h2 class="letra-iman">Timeline Académica</h2>
@@ -39,70 +57,39 @@
 
             <div class="tree-container">
                 <div class="tree">
-                    <div class="node root">
-                        <span>Formação</span>
-                    </div>
-
+                    <div class="node root"><span>Formação</span></div>
                     <div class="branches">
-                        <!-- Ano 2024 -->
                         <div class="branch year-branch">
-                            <div class="node year-node">
-                                <strong>2024</strong>
-                            </div>
+                            <div class="node year-node"><strong>2024</strong></div>
                             <div class="sub-branches">
                                 <div class="sub-branch">
-                                    <div class="node">
-                                        <p>Introdução à Programação<br><small>IP</small></p>
-                                    </div>
+                                    <div class="node"><p>Introdução à Programação<br><small>IP</small></p></div>
                                 </div>
                                 <div class="sub-branch">
-                                    <div class="node">
-                                        <p>Programação Orientada ao Objecto I<br><small>OOP1</small></p>
-                                    </div>
+                                    <div class="node"><p>Programação Orientada ao Objecto I<br><small>OOP1</small></p></div>
                                 </div>
                                 <div class="sub-branch">
-                                    <div class="node">
-                                        <p>Algoritmo e Estrutura de Dados I<br><small>AED1</small></p>
-                                    </div>
+                                    <div class="node"><p>Algoritmo e Estrutura de Dados I<br><small>AED1</small></p></div>
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Ano 2025 -->
                         <div class="branch year-branch">
-                            <div class="node year-node">
-                                <strong>2025</strong>
-                            </div>
+                            <div class="node year-node"><strong>2025</strong></div>
                             <div class="sub-branches">
                                 <div class="sub-branch">
-                                    <div class="node">
-                                        <p>Programação Orientada ao Objecto II<br><small>OOP2</small></p>
-                                    </div>
+                                    <div class="node"><p>Programação Orientada ao Objecto II<br><small>OOP2</small></p></div>
                                 </div>
                                 <div class="sub-branch">
-                                    <div class="node">
-                                        <p>Algoritmo e Estrutura de Dados II<br><small>AED2</small></p>
-                                    </div>
+                                    <div class="node"><p>Algoritmo e Estrutura de Dados II<br><small>AED2</small></p></div>
                                 </div>
                                 <div class="sub-branch">
-                                    <div class="node">
-                                        <p>Programação Web<br><small>PE</small></p>
-                                    </div>
-                                </div>
-                                <!--<div class="sub-branch">
-                                <div class="node">
-                                    <p>Base de Dados I<br><small>BD1</small></p>
-                                </div>
-                            </div>-->
-                                <div class="sub-branch">
-                                    <div class="node">
-                                        <p>Redes de Computador<br><small>RC</small></p>
-                                    </div>
+                                    <div class="node"><p>Programação Web<br><small>PE</small></p></div>
                                 </div>
                                 <div class="sub-branch">
-                                    <div class="node">
-                                        <p>Paradigmas de Programação<br><small>PP</small></p>
-                                    </div>
+                                    <div class="node"><p>Redes de Computador<br><small>RC</small></p></div>
+                                </div>
+                                <div class="sub-branch">
+                                    <div class="node"><p>Paradigmas de Programação<br><small>PP</small></p></div>
                                 </div>
                             </div>
                         </div>
@@ -112,79 +99,37 @@
         </section>
 
         <div class="content-block">
-            <h2 class="letra-iman">
-                About My Skills
-            </h2>
+            <h2 class="letra-iman">About My Skills</h2>
         </div>
 
         <div class="tech-slider">
             <div class="tech-track">
-                <div class="divs">
-                    <img src="assets/scoll-pic/html.png" alt="HTML" onerror="this.style.display='none';">
-                </div>
-                <div class="divs">
-                    <img src="assets/scoll-pic/css.png" alt="CSS" onerror="this.style.display='none';">
-                </div>
-                <div class="divs">
-                    <img src="assets/scoll-pic/js.png" alt="JavaScript" onerror="this.style.display='none';">
-                </div>
-                <div class="divs">
-                    <img src="assets/scoll-pic/java.png" alt="Java" onerror="this.style.display='none';">
-                </div>
-                <div class="divs">
-                    <img src="assets/scoll-pic/database.png" alt="Database" onerror="this.style.display='none';">
-                </div>
-                <!-- duplicado para loop infinito -->
-                <div class="divs">
-                    <img src="assets/scoll-pic/html.png" alt="HTML" onerror="this.style.display='none';">
-                </div>
-                <div class="divs">
-                    <img src="assets/scoll-pic/css.png" alt="CSS" onerror="this.style.display='none';">
-                </div>
-                <div class="divs">
-                    <img src="assets/scoll-pic/js.png" alt="JavaScript" onerror="this.style.display='none';">
-                </div>
-                <div class="divs">
-                    <img src="assets/scoll-pic/java.png" alt="Java" onerror="this.style.display='none';">
-                </div>
-                <div class="divs">
-                    <img src="assets/scoll-pic/database.png" alt="Database" onerror="this.style.display='none';">
-                </div>
-                <!-- triplicado para loop infinito -->
-                <div class="divs">
-                    <img src="assets/scoll-pic/html.png" alt="HTML" onerror="this.style.display='none';">
-                </div>
-                <div class="divs">
-                    <img src="assets/scoll-pic/css.png" alt="CSS" onerror="this.style.display='none';">
-                </div>
-                <div class="divs">
-                    <img src="assets/scoll-pic/js.png" alt="JavaScript" onerror="this.style.display='none';">
-                </div>
-                <div class="divs">
-                    <img src="assets/scoll-pic/java.png" alt="Java" onerror="this.style.display='none';">
-                </div>
-                <div class="divs">
-                    <img src="assets/scoll-pic/database.png" alt="Database" onerror="this.style.display='none';">
-                </div>
-                <!-- quadruplicado para loop infinito -->
-                <div class="divs">
-                    <img src="assets/scoll-pic/html.png" alt="HTML" onerror="this.style.display='none';">
-                </div>
-                <div class="divs">
-                    <img src="assets/scoll-pic/css.png" alt="CSS" onerror="this.style.display='none';">
-                </div>
-                <div class="divs">
-                    <img src="assets/scoll-pic/js.png" alt="JavaScript" onerror="this.style.display='none';">
-                </div>
-                <div class="divs">
-                    <img src="assets/scoll-pic/java.png" alt="Java" onerror="this.style.display='none';">
-                </div>
-                <div class="divs">
-                    <img src="assets/scoll-pic/database.png" alt="Database" onerror="this.style.display='none';">
-                </div>
+                <div class="divs"><img src="assets/scoll-pic/html.png" alt="HTML" onerror="this.style.display='none';"></div>
+                <div class="divs"><img src="assets/scoll-pic/swift.png" alt="Swift" onerror="this.style.display='none';"></div>
+                <div class="divs"><img src="assets/scoll-pic/css.png" alt="CSS" onerror="this.style.display='none';"></div>
+                <div class="divs"><img src="assets/scoll-pic/js.png" alt="JavaScript" onerror="this.style.display='none';"></div>
+                <div class="divs"><img src="assets/scoll-pic/java.png" alt="Java" onerror="this.style.display='none';"></div>
+                <div class="divs"><img src="assets/scoll-pic/database.png" alt="Database" onerror="this.style.display='none';"></div>
+                <div class="divs"><img src="assets/scoll-pic/html.png" alt="HTML" onerror="this.style.display='none';"></div>
+                <div class="divs"><img src="assets/scoll-pic/swift.png" alt="Swift" onerror="this.style.display='none';"></div>
+                <div class="divs"><img src="assets/scoll-pic/css.png" alt="CSS" onerror="this.style.display='none';"></div>
+                <div class="divs"><img src="assets/scoll-pic/js.png" alt="JavaScript" onerror="this.style.display='none';"></div>
+                <div class="divs"><img src="assets/scoll-pic/java.png" alt="Java" onerror="this.style.display='none';"></div>
+                <div class="divs"><img src="assets/scoll-pic/database.png" alt="Database" onerror="this.style.display='none';"></div>
+                <div class="divs"><img src="assets/scoll-pic/html.png" alt="HTML" onerror="this.style.display='none';"></div>
+                <div class="divs"><img src="assets/scoll-pic/swift.png" alt="Swift" onerror="this.style.display='none';"></div>
+                <div class="divs"><img src="assets/scoll-pic/css.png" alt="CSS" onerror="this.style.display='none';"></div>
+                <div class="divs"><img src="assets/scoll-pic/js.png" alt="JavaScript" onerror="this.style.display='none';"></div>
+                <div class="divs"><img src="assets/scoll-pic/java.png" alt="Java" onerror="this.style.display='none';"></div>
+                <div class="divs"><img src="assets/scoll-pic/database.png" alt="Database" onerror="this.style.display='none';"></div>
+                <div class="divs"><img src="assets/scoll-pic/html.png" alt="HTML" onerror="this.style.display='none';"></div>
+                <div class="divs"><img src="assets/scoll-pic/swift.png" alt="Swift" onerror="this.style.display='none';"></div>
+                <div class="divs"><img src="assets/scoll-pic/css.png" alt="CSS" onerror="this.style.display='none';"></div>
+                <div class="divs"><img src="assets/scoll-pic/js.png" alt="JavaScript" onerror="this.style.display='none';"></div>
+                <div class="divs"><img src="assets/scoll-pic/java.png" alt="Java" onerror="this.style.display='none';"></div>
+                <div class="divs"><img src="assets/scoll-pic/database.png" alt="Database" onerror="this.style.display='none';"></div>
             </div>
         </div>
-
 
         <div class="content-block">
             <h2 class="letra-iman">Experiência</h2>
@@ -204,48 +149,64 @@
 
         <div class="skills-section">
             <h2 class="letra-iman">Áreas de Interesse</h2>
-            <div class="skills-grid">
-                <div class="skill-item">
-                    <div class="divs">
-                        <strong>Java Desktop</strong>
-                    </div>
-                    <span>Swing / AWT</span>
+        
+            <div class="tile-grid">
+        
+                <!-- BIG — Java Desktop, destaque 3×2 -->
+                <div class="tile tile--big tile--games">
+                    <div class="tile-icon">☕</div>
+                    <div class="tile-label">Java Desktop</div>
+                    <div class="tile-desc">Aplicações nativas com Swing e AWT. Foco em estruturas de dados, algoritmos e interfaces de consola.</div>
+                    <div class="tile-accent"></div>
                 </div>
-                <div class="skill-item">
-                    <div class="divs">
-                        <strong>Redes</strong>
-                    </div>
-                    <span>LAN / Sockets</span>
+        
+                <!-- SMALL — Redes, 1×1 -->
+                <div class="tile tile--wide tile--cyber">
+                    <div class="tile-icon">⟁</div>
+                    <div class="tile-label">Redes</div>
+                    <div class="tile-tag">LAN · Sockets</div>
+                    <div class="tile-accent"></div>
                 </div>
-                <div class="skill-item">
-                    <div class="divs">
-                        <strong>Estruturas de Dados</strong>
-                    </div>
-                    <span>Algoritmos</span>
+
+                <!-- TALL — Swift / macOS, 2×2 -->
+                <div class="tile tile--big tile--code">
+                    <div class="tile-icon">◈</div>
+                    <div class="tile-label">Swift / macOS</div>
+                    <div class="tile-tag">SwiftUI · CoreData</div>
+                    <div class="tile-accent"></div>
                 </div>
-                <div class="skill-item">
-                    <div class="divs">
-                        <strong>Sistemas</strong>
-                    </div>
-                    <span>Académicos / Comerciais</span>
+        
+                <!-- WIDE — Estruturas de Dados, 3×1 -->
+                <div class="tile tile--wide tile--motion">
+                    <div class="tile-icon">⬡</div>
+                    <div class="tile-label">Estruturas de Dados</div>
+                    <div class="tile-tag">Algoritmos · BST · Grafos</div>
+                    <div class="tile-accent"></div>
                 </div>
-                <div class="skill-item">
-                    <div class="divs">
-                        <strong>Web</strong>
-                    </div>
-                    <span>Small Web site</span>
+        
+                <!-- Normal — Web, 2×1 -->
+                <div class="tile tile--art tile--wide">
+                    <div class="tile-icon">✦</div>
+                    <div class="tile-label">Web</div>
+                    <div class="tile-tag">HTML · CSS · JS</div>
+                    <div class="tile-accent"></div>
                 </div>
+        
+                <!-- SMALL — Base de Dados, 1×1 -->
+                <div class="tile tile--wide tile--music">
+                    <div class="tile-icon">◎</div>
+                    <div class="tile-label">BD</div>
+                    <div class="tile-tag">SQL</div>
+                    <div class="tile-accent"></div>
+                </div>
+        
             </div>
         </div>
 
         <div class="github-section">
             <h2 class="letra-iman">Contacto</h2>
             <p class="escrever">Pode me contactar através do GitHub, Email, WhatsApp, Instagram:</p>
-            
-            <!-- Os links serão carregados dinamicamente via JavaScript -->
-            
-            <div id="contacts" ></div>
-        
+            <div id="contacts"></div>
         </div>
 
     </section>
@@ -255,19 +216,10 @@
     </footer>
 
     <script src="js/lang.js"></script>
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare.min.js"></script>
-    <script defer
-        src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015"
-        integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ=="
-        data-cf-beacon='{"rayId":"90bc0d04c9ee90d0","serverTiming":{"name":{"cfExtPri":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}},"version":"2024.10.5","token":"8da6077854c24e468fad2da03badc4e3"}'
-        crossorigin="anonymous"></script>
     <script src="js/hero-effects 1.js"></script>
     <script src="js/fetch_link.js"></script>
     <script src="js/load-contacts.js"></script>
     <script src="js/projects-magnet.js"></script>
 
-
-
 </body>
-
 </html>
