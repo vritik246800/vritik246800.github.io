@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Node Note - Vritik Valabdás</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/picture/favicon.png">
+</head>
+
+<body>
+
+    <header class="project-hero">
+        <a href="index.html" class="back-link">← Portfólio</a>
+        <h1>Node Note</h1>
+        <p>Gestor de notas com interface moderna para macOS</p>
+    </header>
+
+    <main class="project-content">
+
+        <!-- VISÃO GERAL -->
+        <section class="project-overview">
+            <h2>Visão Geral</h2>
+            <p>
+                Aplicação nativa de notas desenvolvida em <strong>SwiftUI</strong> para <strong>macOS</strong>,
+                com foco em produtividade e design minimalista estilo glass. As notas são organizadas
+                numa estrutura de <strong>nós</strong> — cada nota é um nó independente, permitindo
+                navegação rápida e filtragem por categoria. Persistência garantida com <strong>CoreData</strong>,
+                sem dependência de cloud ou serviços externos.
+            </p>
+        </section>
+
+        <!-- FUNCIONALIDADES -->
+        <section class="project-section">
+            <h2>Funcionalidades</h2>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <strong>Criar & Editar Notas</strong>
+                    <p>Editor inline com suporte a texto rico. Criação instantânea com atalho de teclado.</p>
+                </div>
+                <div class="feature-item">
+                    <strong>Organização por Nós</strong>
+                    <p>Estrutura em nós navegáveis — cada nota tem título, corpo e categoria atribuída.</p>
+                </div>
+                <div class="feature-item">
+                    <strong>Pesquisa Rápida</strong>
+                    <p>Filtro em tempo real por título ou conteúdo usando binding com <code>@State</code>.</p>
+                </div>
+                <div class="feature-item">
+                    <strong>Persistência CoreData</strong>
+                    <p>Todas as notas são guardadas localmente com CoreData — sem perda de dados entre sessões.</p>
+                </div>
+                <div class="feature-item">
+                    <strong>UI Glass macOS</strong>
+                    <p>Interface com <code>Material</code> nativo do SwiftUI — sidebar translúcida e painéis em glass.</p>
+                </div>
+                <div class="feature-item">
+                    <strong>Sidebar Navegável</strong>
+                    <p>Layout de três colunas — categorias, lista de notas e editor — típico de apps nativas macOS.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- STACK -->
+        <section class="project-section">
+            <h2>Stack Técnica</h2>
+            <div class="tech-stack">
+                <span class="tech-tag">Swift</span>
+                <span class="tech-tag">SwiftUI</span>
+                <span class="tech-tag">macOS</span>
+                <span class="tech-tag">CoreData</span>
+                <span class="tech-tag">Combine</span>
+                <span class="tech-tag">MVVM</span>
+            </div>
+        </section>
+
+        <!-- ARQUITETURA -->
+        <section class="project-section">
+            <h2>Arquitetura</h2>
+            <div class="architecture-block">
+                <div class="arch-column">
+                    <h3>Views</h3>
+                    <code>ContentView.swift</code>
+                    <code>SidebarView.swift</code>
+                    <code>NoteListView.swift</code>
+                    <code>NoteEditorView.swift</code>
+                </div>
+                <div class="arch-column">
+                    <h3>ViewModel</h3>
+                    <code>NoteViewModel.swift</code>
+                    <code>CategoryViewModel.swift</code>
+                    <code>SearchViewModel.swift</code>
+                </div>
+                <div class="arch-column">
+                    <h3>Modelo / Data</h3>
+                    <code>Note.swift</code>
+                    <code>Category.swift</code>
+                    <code>PersistenceController.swift</code>
+                </div>
+            </div>
+        </section>
+
+        <!-- IMPLEMENTAÇÃO -->
+        <section class="project-section">
+            <h2>Implementação Técnica</h2>
+            <div class="implementation-details">
+                <div class="detail-card">
+                    <strong>Layout NavigationSplitView</strong>
+                    <p>
+                        Usa <code>NavigationSplitView</code> do SwiftUI para o layout de três colunas —
+                        padrão nativo macOS com sidebar colapsável e estado persistente entre sessões.
+                    </p>
+                </div>
+                <div class="detail-card">
+                    <strong>Reatividade com Combine</strong>
+                    <p>
+                        Pesquisa em tempo real implementada com <code>@Published</code> e
+                        <code>debounce</code> do Combine — filtra sem travar a UI mesmo em listas grandes.
+                    </p>
+                </div>
+                <div class="detail-card">
+                    <strong>CoreData + FetchRequest</strong>
+                    <p>
+                        Notas carregadas com <code>@FetchRequest</code> diretamente nas Views,
+                        com predicados dinâmicos para filtrar por categoria ou texto de pesquisa.
+                    </p>
+                </div>
+                <div class="detail-card">
+                    <strong>Glass Morphism Nativo</strong>
+                    <p>
+                        Sidebar e painéis usam <code>.background(.ultraThinMaterial)</code>
+                        para integração visual com o sistema macOS — sem assets ou libs externas.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ESTADO -->
+        <section class="project-section">
+            <h2>Estado & Evolução</h2>
+            <p>
+                <strong>Atual:</strong> App funcional com criação, edição, organização por categorias, pesquisa e persistência completa.
+            </p>
+            <p>
+                <strong>Possíveis evoluções:</strong> sincronização com iCloud via <code>NSPersistentCloudKitContainer</code>,
+                exportação de notas em Markdown, suporte a tags múltiplas por nota e modo de foco fullscreen.
+            </p>
+        </section>
+
+    </main>
+
+    <footer>
+        © <span id="currentYear"></span> — Vritik Valabdás
+    </footer>
+
+    <script src="js/lang.js"></script>
+
+</body>
+</html>

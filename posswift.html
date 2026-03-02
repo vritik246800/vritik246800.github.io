@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POS Swift - Vritik Valabdás</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/picture/favicon.png">
+</head>
+
+<body>
+
+    <header class="project-hero">
+        <a href="index.html" class="back-link">← Portfólio</a>
+        <h1>POS Swift</h1>
+        <p>Sistema de vendas moderno para macOS</p>
+    </header>
+
+    <main class="project-content">
+
+        <!-- VISÃO GERAL -->
+        <section class="project-overview">
+            <h2>Visão Geral</h2>
+            <p>
+                Aplicação nativa para <strong>macOS</strong> desenvolvida em <strong>SwiftUI</strong>
+                para gestão de ponto de venda. Interface estilo <strong>glass morphism</strong> com
+                fluxo de venda otimizado, cálculo automático de troco e gestão de stock em tempo real.
+                Construída com foco em rapidez de operação — ideal para pequenos negócios que precisam
+                de uma solução leve e nativa, sem dependência de web ou cloud.
+            </p>
+        </section>
+
+        <!-- FUNCIONALIDADES -->
+        <section class="project-section">
+            <h2>Funcionalidades</h2>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <strong>Gestão de Produtos</strong>
+                    <p>Adicionar, editar e remover produtos com nome, preço e categoria. Suporte a imagem do produto via SF Symbols.</p>
+                </div>
+                <div class="feature-item">
+                    <strong>Carrinho de Compras</strong>
+                    <p>Fluxo de venda rápido — adiciona ao carrinho, ajusta quantidade e finaliza com um clique.</p>
+                </div>
+                <div class="feature-item">
+                    <strong>Cálculo Automático</strong>
+                    <p>Total e troco calculados em tempo real com binding bidirecional entre o estado e a UI.</p>
+                </div>
+                <div class="feature-item">
+                    <strong>UI Glass</strong>
+                    <p>Visual com efeito de glass morphism nativo do macOS, usando <code>Material</code> do SwiftUI.</p>
+                </div>
+                <div class="feature-item">
+                    <strong>Histórico de Vendas</strong>
+                    <p>Registo das transações com data, hora e total. Visualização por sessão.</p>
+                </div>
+                <div class="feature-item">
+                    <strong>Persistência Local</strong>
+                    <p>Dados guardados com CoreData — produtos e histórico sobrevivem a reinícios da app.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- STACK -->
+        <section class="project-section">
+            <h2>Stack Técnica</h2>
+            <div class="tech-stack">
+                <span class="tech-tag">Swift</span>
+                <span class="tech-tag">SwiftUI</span>
+                <span class="tech-tag">macOS</span>
+                <span class="tech-tag">CoreData</span>
+                <span class="tech-tag">Combine</span>
+                <span class="tech-tag">MVVM</span>
+            </div>
+        </section>
+
+        <!-- ARQUITETURA -->
+        <section class="project-section">
+            <h2>Arquitetura</h2>
+            <div class="architecture-block">
+                <div class="arch-column">
+                    <h3>Views</h3>
+                    <code>ContentView.swift</code>
+                    <code>ProductListView.swift</code>
+                    <code>CartView.swift</code>
+                    <code>CheckoutView.swift</code>
+                </div>
+                <div class="arch-column">
+                    <h3>ViewModel</h3>
+                    <code>CartViewModel.swift</code>
+                    <code>ProductViewModel.swift</code>
+                    <code>SalesViewModel.swift</code>
+                </div>
+                <div class="arch-column">
+                    <h3>Modelo / Data</h3>
+                    <code>Product.swift</code>
+                    <code>CartItem.swift</code>
+                    <code>SaleRecord.swift</code>
+                    <code>PersistenceController.swift</code>
+                </div>
+            </div>
+        </section>
+
+        <!-- IMPLEMENTAÇÃO -->
+        <section class="project-section">
+            <h2>Implementação Técnica</h2>
+            <div class="implementation-details">
+                <div class="detail-card">
+                    <strong>MVVM com Combine</strong>
+                    <p>
+                        Os ViewModels usam <code>@Published</code> e <code>@ObservedObject</code>
+                        para sincronização reativa entre estado e UI — sem callbacks manuais.
+                    </p>
+                </div>
+                <div class="detail-card">
+                    <strong>Glass Morphism Nativo</strong>
+                    <p>
+                        Uso do modificador <code>.background(.ultraThinMaterial)</code> do SwiftUI
+                        para efeito glass sem bibliotecas externas — 100% nativo macOS.
+                    </p>
+                </div>
+                <div class="detail-card">
+                    <strong>CoreData Stack</strong>
+                    <p>
+                        <code>PersistenceController</code> singleton gere o contexto NSManagedObject.
+                        Entidades mapeadas para structs Swift com extensões Codable.
+                    </p>
+                </div>
+                <div class="detail-card">
+                    <strong>Fluxo de Checkout</strong>
+                    <p>
+                        Estado do carrinho gerido por <code>CartViewModel</code> — adicionar, remover,
+                        limpar e calcular troco são operações atómicas com validação de input.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ESTADO -->
+        <section class="project-section">
+            <h2>Estado & Evolução</h2>
+            <p>
+                <strong>Atual:</strong> Sistema funcional com gestão de produtos, fluxo de venda completo e histórico por sessão.
+            </p>
+            <p>
+                <strong>Possíveis evoluções:</strong> exportação de relatórios em PDF via <code>PDFKit</code>,
+                suporte a múltiplos utilizadores com autenticação local, modo quiosque fullscreen e sincronização com iCloud.
+            </p>
+        </section>
+
+    </main>
+
+    <footer>
+        © <span id="currentYear"></span> — Vritik Valabdás
+    </footer>
+
+    <script src="js/lang.js"></script>
+
+</body>
+</html>
