@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hero Preview — Vritik Valabdás</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --neon-green:  #3dff91;
+    --neon-pink:   #ff2d78;
+    --neon-cyan:   #00f0ff;
+    --acid-yellow: #e8ff00;
+    --bg:          #050507;
+    --grid-color:  rgba(61,255,145,0.06);
+  }
+
+  html, body { height: 100%; overflow-x: hidden; background: var(--bg); }
+
+  /* ── SCAN-LINE OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0,0,0,0.18) 2px,
+      rgba(0,0,0,0.18) 4px
+    );
+  }
+
+  /* ── GRID FLOOR ── */
+  body::after {
+    content: '';
+    position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    background-image:
+      linear-gradient(var(--grid-color) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  /* ══════════════════════════════════════════
+     HERO — fullscreen
+  ══════════════════════════════════════════ */
+  .hero {
+    position: relative; z-index: 1;
+    height: 100vh; width: 100%;
+    display: flex; flex-direction: column;
+    justify-content: flex-end;          /* empurra tudo para baixo */
+    padding: 0 6vw 0 6vw;
+    overflow: hidden;
+  }
+
+  /* Glitch noise blob fundo */
+  .hero__bg-blob {
+    position: absolute;
+    top: -10%; left: -5%;
+    width: 55vw; height: 55vw;
+    background: radial-gradient(ellipse at 30% 40%,
+      rgba(61,255,145,0.07) 0%,
+      rgba(0,240,255,0.04) 40%,
+      transparent 70%);
+    filter: blur(60px);
+    pointer-events: none;
+  }
+
+  /* Corner tag estilo UI HUD */
+  .hero__tag {
+    position: absolute;
+    top: 2.4rem; right: 6vw;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: .72rem; letter-spacing: .22em;
+    color: var(--neon-green);
+    opacity: .55;
+    text-transform: uppercase;
+  }
+  .hero__tag::before {
+    content: '[ ';
+  }
+  .hero__tag::after {
+    content: ' ]';
+  }
+
+  /* Status dot */
+  .hero__status {
+    position: absolute;
+    top: 2.5rem; left: 6vw;
+    display: flex; align-items: center; gap: .55rem;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: .7rem; letter-spacing: .18em;
+    color: rgba(255,255,255,.35);
+    text-transform: uppercase;
+  }
+  .hero__status-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--neon-green);
+    box-shadow: 0 0 8px var(--neon-green), 0 0 18px var(--neon-green);
+    animation: pulse-dot 2s ease-in-out infinite;
+  }
+  @keyframes pulse-dot {
+    0%,100% { opacity: 1; }
+    50%      { opacity: .35; }
+  }
+
+  /* ── NOME ── */
+  .hero__name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(5rem, 14vw, 15rem);
+    line-height: .88;
+    letter-spacing: .01em;
+    color: #fff;
+    position: relative;
+    user-select: none;
+    /* Glitch outline effect */
+    text-shadow:
+      3px  0   0  var(--neon-pink),
+      -3px 0   0  var(--neon-cyan),
+      0    0  40px rgba(61,255,145,0.15);
+    animation: glitch-name 8s infinite;
+  }
+
+  @keyframes glitch-name {
+    0%,94%,100% {
+      text-shadow:
+        3px  0   0  var(--neon-pink),
+        -3px 0   0  var(--neon-cyan),
+        0    0  40px rgba(61,255,145,0.15);
+    }
+    95% {
+      text-shadow:
+        -6px  0  0  var(--neon-pink),
+         8px  0  0  var(--neon-cyan),
+        0    0  60px rgba(232,255,0,0.25);
+      transform: skewX(-1.5deg);
+    }
+    96% {
+      text-shadow:
+        5px   0  0  var(--acid-yellow),
+        -5px  0  0  var(--neon-cyan);
+      transform: skewX(0deg);
+    }
+  }
+
+  /* accent: primeira letra colorida */
+  .hero__name span {
+    color: var(--neon-green);
+    text-shadow:
+      0 0 20px var(--neon-green),
+      0 0 50px rgba(61,255,145,.35);
+  }
+
+  /* ── SUBTITLE ── */
+  .hero__subtitle {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: clamp(.75rem, 1.1vw, 1rem);
+    letter-spacing: .28em;
+    color: rgba(255,255,255,.45);
+    text-transform: uppercase;
+    margin-top: .9rem;
+    margin-bottom: 1.4rem;
+
+    /* typewriter */
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 2px solid var(--neon-green);
+    width: 0;
+    animation: typewriter 2.4s steps(40,end) .4s forwards, blink .75s step-end infinite;
+  }
+
+  @keyframes typewriter {
+    to { width: 100%; }
+  }
+  @keyframes blink {
+    50% { border-color: transparent; }
+  }
+
+  /* ── LINHA DIVISÓRIA ── */
+  .hero__divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      var(--neon-green) 15%,
+      var(--acid-yellow) 50%,
+      var(--neon-cyan) 85%,
+      transparent 100%
+    );
+    box-shadow: 0 0 12px rgba(61,255,145,.5), 0 0 30px rgba(61,255,145,.15);
+    position: relative;
+  }
+
+  /* Ticker na linha */
+  .hero__divider::after {
+    content: '▶ VRITIK VALABDÁS ◆ DESENVOLVEDOR ◆ JAVA · SWIFT · WEB ◆ SISTEMAS · REDES · GUI ◆ VRITIK VALABDÁS ◆ DESENVOLVEDOR ◆ JAVA · SWIFT · WEB ◆';
+    position: absolute;
+    top: 3px;
+    left: 0;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: .58rem;
+    letter-spacing: .18em;
+    color: rgba(61,255,145,.4);
+    white-space: nowrap;
+    animation: ticker 22s linear infinite;
+  }
+
+  @keyframes ticker {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* ── BOTÕES — colados à linha ── */
+  .hero__buttons {
+    display: flex;
+    gap: 0;
+    margin-top: 0;            /* encostado à linha */
+    padding: 1.2rem 0 4rem 0;
+    flex-wrap: wrap;
+  }
+
+  .hero__btn {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1rem;
+    letter-spacing: .2em;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: .7rem 2.2rem;
+    border: 1px solid rgba(61,255,145,.35);
+    background: transparent;
+    color: var(--neon-green);
+    cursor: pointer;
+    position: relative;
+    transition: background .18s, color .18s, border-color .18s;
+    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+  }
+
+  .hero__btn::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: var(--neon-green);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform .22s ease;
+    z-index: -1;
+  }
+
+  .hero__btn:hover {
+    color: #000;
+    border-color: var(--neon-green);
+  }
+  .hero__btn:hover::before { transform: scaleX(1); }
+
+  /* botão destaque — PDF */
+  .hero__btn--accent {
+    border-color: var(--neon-pink);
+    color: var(--neon-pink);
+  }
+  .hero__btn--accent::before { background: var(--neon-pink); }
+  .hero__btn--accent:hover   { color: #fff; border-color: var(--neon-pink); }
+
+  /* separador entre botões */
+  .hero__btn + .hero__btn {
+    margin-left: -1px; /* sobrepõe bordas → look modular */
+  }
+
+  /* ── SCROLL HINT ── */
+  .hero__scroll {
+    position: absolute;
+    bottom: 1.8rem; right: 6vw;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: .65rem;
+    letter-spacing: .25em;
+    color: rgba(255,255,255,.25);
+    text-transform: uppercase;
+    display: flex; align-items: center; gap: .5rem;
+    animation: fade-updown 2.5s ease-in-out infinite;
+  }
+  .hero__scroll::after {
+    content: '↓';
+    font-size: .9rem;
+    color: var(--neon-green);
+    opacity: .6;
+  }
+  @keyframes fade-updown {
+    0%,100% { transform: translateY(0); opacity: .35; }
+    50%      { transform: translateY(5px); opacity: .7; }
+  }
+
+  /* ══════════ SECÇÃO ABAIXO (para scroll demo) ══════════ */
+  .below-fold {
+    position: relative; z-index: 1;
+    min-height: 40vh;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Share Tech Mono', monospace;
+    color: rgba(255,255,255,.2);
+    font-size: .8rem; letter-spacing: .2em;
+    text-transform: uppercase;
+    border-top: 1px solid rgba(61,255,145,.08);
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero__bg-blob"></div>
+
+  <div class="hero__status">
+    <span class="hero__status-dot"></span>
+    PORTFOLIO_v2.4 · ONLINE
+  </div>
+
+  <div class="hero__tag">PT · 2025</div>
+
+  <!-- NOME -->
+  <h1 class="hero__name" id="hero-name">
+    <span>V</span>RITIK<br>VALABDÁS
+  </h1>
+
+  <!-- SUBTITLE -->
+  <p class="hero__subtitle">Desenvolvedor Java &nbsp;·&nbsp; Sistemas &nbsp;·&nbsp; Redes &nbsp;·&nbsp; GUI</p>
+
+  <!-- LINHA -->
+  <div class="hero__divider"></div>
+
+  <!-- BOTÕES — logo abaixo da linha -->
+  <div class="hero__buttons">
+    <a class="hero__btn" href="#java-projects">Projetos</a>
+    <a class="hero__btn" href="about.html">Sobre</a>
+    <button class="hero__btn hero__btn--accent" onclick="generatePDF()">Download PDF</button>
+  </div>
+
+  <div class="hero__scroll">scroll</div>
+</header>
+
+<!-- Conteúdo abaixo (só para mostrar que o scroll funciona) -->
+<div class="below-fold">// PROJETOS JAVA · SWIFT · WEB</div>
+
+</body>
+</html>
