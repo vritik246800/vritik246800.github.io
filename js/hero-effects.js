@@ -5,10 +5,21 @@ const typingSpeed = 100;
 let index = 0;
 let chars = [];
 
-/* typing */
+/* typing — escreve letra a letra, insere <br> no espaço entre as palavras */
 function typeText() {
     if (index < text.length) {
-        hero.textContent += text[index];
+        const letter = text[index];
+
+        // Espaço entre "Vritik" e "Valabdás" → quebra de linha
+        if (letter === " ") {
+            hero.appendChild(document.createElement("br"));
+        } else {
+            const span = document.createElement("span");
+            span.className = "char";
+            span.textContent = letter;
+            hero.appendChild(span);
+        }
+
         index++;
         setTimeout(typeText, typingSpeed);
     } else {
@@ -16,19 +27,13 @@ function typeText() {
     }
 }
 
-/* split em letras */
+/* split em letras — mantém o <br>, ignora-o no array de chars */
 function splitLetters() {
-    const content = hero.textContent;
-    hero.innerHTML = "";
-    chars = [];
+    // Recolhe os spans já criados (ignora o br)
+    chars = Array.from(hero.querySelectorAll(".char"));
 
-    [...content].forEach(letter => {
-        const span = document.createElement("span");
-        span.className = "char";
-        span.textContent = letter === " " ? "\u00A0" : letter;
-        hero.appendChild(span);
-        chars.push(span);
-    });
+    // Colore o primeiro char (V de Vritik)
+    if (chars[0]) chars[0].classList.add("char-v");
 }
 
 /* efeito íman */
@@ -53,7 +58,7 @@ document.addEventListener("mousemove", e => {
     });
 });
 
-/* mobile: toque ativa íman leve */
+/* mobile */
 hero.addEventListener("touchmove", e => {
     const touch = e.touches[0];
     chars.forEach(span => {
@@ -76,6 +81,4 @@ hero.addEventListener("touchend", () => {
     chars.forEach(span => span.style.transform = "translate(0,0)");
 });
 
-/* start */
 window.addEventListener("load", typeText);
-
